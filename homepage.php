@@ -31,6 +31,14 @@
            
        </div>
        </div>
+       <div class="small-container" id="TimeSale">
+        <h2 class="title">Time Sale</h2>
+             <div class="row">
+             	<?php time_sale(); ?>
+                 <?php time_sale_products(); ?>
+           </div>
+           
+       </div>
        <div class="small-container">
         <h2 class="title">Cate</h2>
              <div class="row">
