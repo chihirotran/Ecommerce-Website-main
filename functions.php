@@ -1,5 +1,4 @@
 <?php
-
 function set_message($message)
 {
 	if (!empty($message)) {
@@ -128,20 +127,36 @@ function login_user()
 	if (isset($_POST['submit'])) {
 		$username = escape_string($_POST['username']);
 		$password = escape_string($_POST['password']);
-
-		$query = query("SELECT * FROM users WHERE username = '{$username}' AND password = '{$password}'");
+		$query = query("SELECT * FROM users WHERE username = '{$username}'");
 		confirm($query);
 
-		if (mysqli_num_rows($query) == 0) {
-			set_message("Incorrect username or password. Please try again.");
-			redirect("login_page.php");
+		if (mysqli_num_rows($query) > 0) {
+			while ($row = fetch_array($query)) {
+			$password_hash = $row['password'];
+			if(password_verify($password,$password_hash)){
+			$user_id = escape_string($row['user_id']);
+			
+			$gmail_authentication = escape_string($row['gmail_authentication']);
+			$email = escape_string($row['email']);
+			if($gmail_authentication==1){
+				$_SESSION['user_id'] = $user_id;
+				$_SESSION['username'] = $username;
+				redirect("homepage.php");
+			}else{
+				redirect("gmail_authentication.php?email=$email&username=$username");
+			}
+			}else{
+				set_message("Mật Khẩu Không Đúng");
+				redirect("login_page.php");
+			}
+		}
+			
 		} else {
 			while ($row = fetch_array($query)) {
 
-				$user_id = escape_string($row['user_id']);
+				
 			}
-			$_SESSION['user_id'] = $user_id;
-			$_SESSION['username'] = $username;
+			
 
 			if ($username == 'admin' && $password == '1234') {
 				redirect("admin_index.php");
@@ -151,25 +166,112 @@ function login_user()
 		}
 	}
 }
-
-
-function add_user()
-{
-
-	if (isset($_POST['add_user'])) {
-
-		$username = escape_string($_POST['username']);
-		$email = escape_string($_POST['email']);
-		$password = escape_string($_POST['password']);
-
-		$query = query("INSERT INTO users(username,email,password) VALUES('{$username}','{$email}','{$password}')");
+function add_user_google($email,$name){
+	
+		
+		$query = query("INSERT INTO `logingg`(`email`, `name`) VALUES ('{$email}','{$name}')");
 		confirm($query);
 
 		set_message("USER CREATED");
 
 		redirect("homepage.php");
 
+	
+}
+function get_count_user_google($email,$name){
+		
+		$query = query("SELECT * FROM `logingg` WHERE `email`='{$email}' and `name`='{$name}'");
+		confirm($query);
+		$count =0;
+		while ($row = fetch_array($query)){
+			$count++;
+		}
+		return $count;
+
+	
+}
+
+function add_user()
+{
+
+	if (isset($_POST['add_user'])) {
+
+		
+
+		$username = escape_string($_POST['username']);
+		$email = escape_string($_POST['email']);
+		$password = escape_string($_POST['password']);
+		$hashed_password = password_hash($password, PASSWORD_DEFAULT);
+		$code = escape_string($_POST['code']);
+		$query = query("INSERT INTO users(username,email,password) VALUES('{$username}','{$email}','{$hashed_password}')");
+		confirm($query);
+		
+		set_message("USER CREATED");
+		email_verification($email);
+		redirect("gmail_authentication.php?email=$email&username=$username");
+
 	}
+}
+function code_verification($email,$username){
+	$query = query("UPDATE users SET gmail_authentication=1 WHERE email='{$email}' AND username='{$username}'");
+	confirm($query);
+	redirect("homepage.php");
+}
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+function email_verification($email)
+{
+  
+
+  if (isset($_POST['email_verification'])) 
+
+
+    $email = trim($_POST['email']);
+
+
+
+    require 'vendor/autoload.php';
+    // bỏ phần code đi. tạo thêm 1 trang khi ấn đăng ký thì chuyển sang trang đấy.đồng thời insert vô SQL trạng thái xác thực là 0 khi xác thực rồi thì chuyển trạng thái sang 1
+    // Lấy thông tin email từ yêu cầu POST
+    if (isset($_POST['to'])) {
+      $to = $_POST['to'];
+    }
+
+    if (isset($_POST['subject'])) {
+      $subject = $_POST['subject'];
+    }
+
+    if (isset($_POST['message'])) {
+      $message = $_POST['message'];
+    }
+
+
+    // Khởi tạo đối tượng PHPMailer
+    $mail = new PHPMailer();
+    $mail->isSMTP();
+    $mail->Host = 'smtp.gmail.com';
+    $mail->SMTPAuth = true;
+    $mail->Username = 'chihirotran@gmail.com'; // Thay đổi email của bạn
+    $mail->Password = 'rfxdwcdufncndzmf'; // Thay đổi mật khẩu của bạn
+    $mail->SMTPSecure = 'tls';
+    $mail->Port = 587;
+    // Thiết lập thông tin email
+    $mail->setFrom('chihirotran@gmail.com', 'LEDMDSTORE'); // Thay đổi email và tên của bạn   
+    $mail->addAddress($email);
+    $mail->isHTML(true);
+    $mail->Subject = "Code Verification ";
+    $randomNumber = mt_rand(0, 99999);
+    $codeRD = sprintf('%05d', $randomNumber);
+    $mail->Body = "Code: .$codeRD.";
+    $codeRDX = $codeRD;
+	$_SESSION['code'] = $codeRDX;
+    // Gửi email và kiểm tra kết quả
+    if ($mail->send()) {
+      echo 'Email đã được gửi thành công!';
+    } else {
+      echo 'Đã có lỗi xảy ra khi gửi email: ' . $mail->ErrorInfo;
+    }
+  
 }
 
 
@@ -215,7 +317,83 @@ function show_product_category_title($product_category_id)
 	}
 
 }
+function show_category_title()
+{
+	$category_query = query("SELECT * FROM categories");
+	confirm($category_query);
+	$cnt=1;
+	while ($row = fetch_array($category_query)) {
+		$category = <<<DELIMETER
+		<tr>
+		<th scope="row">{$cnt}</th>
+		<td>{$row['cat_title']};</td>
+		<td><a href="edit-category.php?cid={$row['cat_id']}"><i class="fa fa-pencil" style="color: #29b6f6;"></i></a> 
+			&nbsp;<a href="manage-categories.php?rid={$row['cat_id']}&&action=del"> <i class="fa fa-trash-o" style="color: #f05050"></i></a> </td>
+		</tr>
+		
+		DELIMETER;
+		$cnt++;
+		echo $category;
+	}
 
+}
+function show_category_title_select()
+{
+	$category_query = query("SELECT * FROM categories");
+	confirm($category_query);
+	$cnt=1;
+	while ($row = fetch_array($category_query)) {
+		$category = <<<DELIMETER
+		<option value="{$row['cat_id']}">{$row['cat_title']}</option>
+		DELIMETER;
+		$cnt++;
+		echo $category;
+	}
+
+}
+function del_category($id){
+	$category_query = query("DELETE FROM categories WHERE cat_id='{$id}';");
+	confirm($category_query);
+}
+function update_category($id,$cat_title){
+
+	$category_query = query("UPDATE categories SET  cat_title='{$cat_title}' WHERE cat_id='{$id}';");
+	confirm($category_query);
+	set_message("successful update ");
+	redirect("manage-categories.php");
+}
+function edit_category_title($cid)
+{
+	$category_query = query("SELECT * FROM categories where cat_id='{$cid}';");
+	confirm($category_query);
+	while ($row = fetch_array($category_query)) {
+		$category = <<<DELIMETER
+		<div class="row">
+			<div class="col-md-6">
+				<form class="form-horizontal" name="category" method="post">
+					<div class="form-group">
+						<label class="col-md-2 control-label">Category</label>
+						<div class="col-md-10">
+							<input type="text" class="form-control" value={$row['cat_title']} name="category" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 control-label">&nbsp;</label>
+						<div class="col-md-10">
+
+							<button type="submit" class="btn btn-custom waves-effect waves-light btn-md" name="submit">
+								Update
+							</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		DELIMETER;
+		echo $category;
+	}
+
+}
 
 
 function get_products_update_page()
@@ -317,13 +495,13 @@ function get_category_products()
 	while ($row = fetch_array($query)) {
 
 		$product = <<<DELIMETER
-	<div class="col-4">
-		    	<a href="product_detail.php?id={$row['product_id']}"><img width='100' src="uploads/{$row['product_image']}"></a>
-		    	<h4><a href="product_detail.php?id={$row['product_id']}">{$row['product_title']}</a></h4>
-		    	<p style="color: red;">&#36;{$row['product_price']}</p>
-		    	<p>{$row['product_short_desc']}</p>
-		        <a class="btn btn-primary" target="_blank" href="cart.php?add={$row['product_id']}">Add to cart</a>
-		    </div>
+	// <div class="col-4">
+	// 	    	<a href="product_detail.php?id={$row['product_id']}"><img width='100' src="uploads/{$row['product_image']}"></a>
+	// 	    	<h4><a href="product_detail.php?id={$row['product_id']}">{$row['product_title']}</a></h4>
+	// 	    	<p style="color: red;">&#36;{$row['product_price']}</p>
+	// 	    	<p>{$row['product_short_desc']}</p>
+	// 	        <a class="btn btn-primary" target="_blank" href="cart.php?add={$row['product_id']}">Add to cart</a>
+	// 	    </div>
 	DELIMETER;
 
 		echo $product;
@@ -445,7 +623,22 @@ function show_categories_add_product()
 
 	}
 }
+function add_login_google()
+{
 
+	$query = query("SELECT * FROM categories");
+	confirm($query);
+
+	while ($row = fetch_array($query)) {
+
+		$category_options = <<<DELIMETER
+		<option value="{$row['cat_id']}">{$row['cat_title']}</option>
+		DELIMETER;
+
+		echo $category_options;
+
+	}
+}
 function search()
 {
 	if (isset($_POST['search_product'])) {
@@ -485,8 +678,8 @@ function show_categories_in_admin()
 function add_category()
 {
 
-	if (isset($_POST['add_category'])) {
-		$cat_title = escape_string($_POST['cat_title']);
+	if (isset($_POST['submit'])) {
+		$cat_title = escape_string($_POST['category']);
 
 		if (empty($cat_title) || $cat_title == " ") {
 
@@ -497,7 +690,7 @@ function add_category()
 			$insert_cat = query("INSERT INTO categories(cat_title) VALUES('{$cat_title}') ");
 			confirm($insert_cat);
 			set_message("Category Created");
-			redirect("categories.php");
+			redirect("manage-categories.php");
 
 		}
 
@@ -677,5 +870,3 @@ function display_users()
 
 	}
 }
-
-?>

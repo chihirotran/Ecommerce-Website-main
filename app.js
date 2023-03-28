@@ -1,6 +1,8 @@
 
 var fut = new Date("march 12, 2023 13:29:00").getTime()
+
 // Sử dụng jQuery để gửi yêu cầu Ajax đến file PHP
+
 $.ajax({
     url: 'get_date.php',
     type: 'GET',
@@ -41,5 +43,6 @@ $.ajax({
         // Xử lý lỗi
     }
 });
+
 
 
