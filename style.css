@@ -136,7 +136,7 @@ small {
 }
 
 .footer {
-    background: #000;
+    background: #ffcc3b;
     color: #8a8a8a;
     font-size: 14px;
     padding: 60px 0 20px;
@@ -147,7 +147,7 @@ small {
 }
 
 .footer h3 {
-    color: #fff;
+    color: black;
     margin-bottom: 20px;
 }
 

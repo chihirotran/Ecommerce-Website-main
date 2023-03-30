@@ -1,5 +1,6 @@
 .header {
-    background: radial-gradient(#fff, #ebd6ff);
+    /* background: radial-gradient(#942222, #53da4f); */
+    background-color: #ffcc3b;
 }
 
 .offer {
@@ -16,12 +17,13 @@
 .navbar {
     display: flex;
     align-items: center;
-    padding: 20px;
+    padding-left: 10px;
+    background-color: #ccbca4;
 }
 
 .btn {
     display: inline-block;
-    background: #7f44b7;
+    background: #ccbca4;
     color: #fff;
     padding: 8px 30px;
     margin: 30px 0;
