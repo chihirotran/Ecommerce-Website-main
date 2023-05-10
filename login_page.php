@@ -36,6 +36,7 @@
                         <input type="password" name="password" placeholder="password"></label>
 
                         <input type="submit" name="submit" class="btn btn-primary" >
+                        <?php login_with_google(); ?>
 
             </form>
               </div>

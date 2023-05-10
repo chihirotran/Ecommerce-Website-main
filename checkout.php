@@ -1,4 +1,21 @@
-<?php require_once("config.php"); ?>
+<?php require_once("config.php"); 
+if(isset($_POST['submit'])){
+    $type = $_POST['pay_type'];
+    if($type=="redirect"){
+        redirect("VNPAY.php");
+    }
+    if($type=="MOMO"){
+        redirect("MOMO.php");
+    }
+    if($type=="credit"){
+        redirect("momo.php");
+    }
+    if($type=="wire"){
+        
+    }
+    
+}
+?>
 
 
 <!DOCTYPE html>
@@ -31,108 +48,55 @@
                      <br>
                  </div>
                  
-                 <form class="" action="" method="post" enctype="multipart/form-data">
+                 <form name="checkout" class="" action="" method="post" enctype="application/x-www-form-urlencoded">
 
-                      <div class="col-md-8">
+                    <div class="col-md-8">
                         
-                        <div class="form-group">
+                        
+
+                        <div style="padding-bottom: 10px;"> <span id="card-inner">Country</span> 
+                        </div>
+                                <div class="custom-select" style="width:200px;">
+                                <label for="city">Thành phố/Tỉnh:</label>
+                                <select name="city" id="city">
+                                    <option value="">-- Chọn thành phố/tỉnh --</option>
+                                </select>
+                                <label for="district">Quận/Huyện:</label>
+                                <select name="district" id="district">
+                                    <option value="">-- Chọn quận/huyện --</option>
+                                </select>
+                                <label for="ward">Xã/Phường:</label>
+                                <select name="ward" id="ward">
+                                    <option value="">-- Chọn xã/phường --</option>
+                                </select>
+                            </div>
+                           <br>
+                           <div class="form-group">
                           <label for="product-title">Address</label>
                           <div class="col-2">
-                          	<input type="text" name="product_title" placeholder="Mrs.Polly Canes 145 East 49th Street USA">
+                          	<input type="text" name="product_title" placeholder="">
                           </div>
                           </label>
                       </div>
 
                       <br>
-
-                        <div style="padding-bottom: 10px;"> <span id="card-inner">Country</span> 
-                        </div>
-                                <div class="custom-select" style="width:200px;">
-                                      <select>
-                                        <option value="0">Select Country:</option>
-                                        <option value="1">Turkey</option>
-                                        <option value="2">United States</option>
-                                        <option value="3">England</option>
-                                        <option value="4">Sweden</option>
-                                        <option value="5">China</option>
-                                        <option value="6">Germany</option>
-                                        <option value="7">Japan</option>
-                                        <option value="8">Canada</option>
-                                        <option value="9">Holland</option>
-                                        <option value="10">Switzerland</option>
-                                        <option value="11">Russia</option>
-                                        <option value="12">Norway</option>
-                                      </select>
-                            </div>
-                           <br>
-
                             <div class="nav">
-                                <form> <span id="card-header">Payment Type</span>
+                                 <span id="card-header">Payment Type</span>
                                 <div class="row row-1" style="padding-bottom: 10px; padding-top: 10px;">
                                     <div class="col-7">
                                         <div class="custom-select" style="width:200px;">
-                                              <select onchange="yesnoCheck(this); wireCheck(this);">
+                                              <select id = "pay_type" name="pay_type">
 	                                                <option value="0">Choose Payment Type</option>
-	                                                <option value="credit">Credit Card</option>
-	                                                <option value="wire">Wire Transfer</option>
+	                                                <option value="credit">Chuyển Khoản</option>
+	                                                <option value="wire">Tiền Mặt</option>
+                                                    <option value="redirect">VNPAY</option>
+                                                    <option value="MOMO">MOMO</option>
                                               </select>
                                         </div>
                                     </div>
                                 </div>
-                            </form>
+                            
                             </div>
-                            <form id="ifYes" style="display: none;" onsubmit="return false"> <span id="card-header"></span>
-                                            <div>
-                                                <div class="col-2" style="padding-bottom: 15px; padding-top: 10px">
-                                                    <span id="card-inner">Card number</span> 
-                                                </div>
-                                                <div class="row">
-                                                	<div class="col-2">
-                                                    	<input type="text" placeholder="**** **** **** 3193">
-                                                	
-                                                	</div>
-                                                    
-                                                </div>
-                                            </div>
-                                            <div class="row three">
-                                                <div class="col-2">
-                                                    <div class="">
-                                                        <div class="row row-2" style="padding-top: 5px; padding-bottom: 10px"> <span id="card-inner" style="float: left">Card Holder Name</span> </div>
-                                                        <div class="row row-2"> <input type="text" placeholder="Name Surname"> </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row three">
-
-                                                <div class="col-2" style="float: right"> <input type="text" placeholder="Exp. date"><input type="text" placeholder="CVV"> </div> 
-                                            </div>
-                                            </div>
-                                        </form>
-                                        <br>
-                                        <form id="ifWire" style="display: none;" onsubmit="return false"> <span id="card-header"></span>
-                                            <div class="row three">
-                                            	<div class="col-2">
-                                            		<span id="card-inner">Account Name</span> 
-                                            	</div>
-                                            </div>
-                                                <div class="row row-2">
-                                                    <input type="text" placeholder="Enter account name">
-                                                </div>
-                                                <div class="form-group">
-                                                     <span id="card-inner" style="float: left">Account Number</span>
-                                                        <div class="col-2"> <input type="text" placeholder="Enter account number"> </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                        <span id="card-inner" style="float: left">Bank Name</span>
-                                                        <div class="col-2"> <input type="text" placeholder="Enter bank name"></div>
-                                                </div>
-                                                    <div class="form-group">
-                                                        <span id="card-inner" style="float: left">IBAN</span>
-                                                        <div class="col-2"> <input type="text" placeholder="AL47 2121 1009 0000 0002 3569 87411﻿"> </div>
-                                                    </div>
-
-                                        </form>
-
 
                         <div class="form-group">
                           <div class="row">
@@ -142,7 +106,8 @@
                         </div>
                           <div class="row">
                             <div class="col-2">
-                              <a href="homepage.php" style="text-align: center;" class="btn">Purchase</a>
+                            <button type="submit" name="submit" class="btn btn-success waves-effect waves-light">Purchase</button>
+                              
                             </div>
                           </div>
                         </div>

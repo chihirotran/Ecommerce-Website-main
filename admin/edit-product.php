@@ -5,10 +5,14 @@ error_reporting(0);
 if (strlen($_SESSION['login']) == 0) {
     header('location:index.php');
 } else {
+    if (isset($_POST['submit'])) {
+        $catid = intval($_GET['pid']);
+        $category = $_POST['category'];
+        update_category($catid, $category);
+    }
 
-    add_event();
 
-    ?>
+?>
 
 
     <!DOCTYPE html>
@@ -55,7 +59,7 @@ if (strlen($_SESSION['login']) == 0) {
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="page-title-box">
-                                    <h4 class="page-title">Add Category</h4>
+                                    <h4 class="page-title">Edit Category</h4>
                                     <ol class="breadcrumb p-0 m-0">
                                         <li>
                                             <a href="#">Admin</a>
@@ -64,7 +68,7 @@ if (strlen($_SESSION['login']) == 0) {
                                             <a href="#">Category </a>
                                         </li>
                                         <li class="active">
-                                            Add Category
+                                            Edit Category
                                         </li>
                                     </ol>
                                     <div class="clearfix"></div>
@@ -77,7 +81,7 @@ if (strlen($_SESSION['login']) == 0) {
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="card-box">
-                                    <h4 class="m-t-0 header-title"><b>Add Event </b></h4>
+                                    <h4 class="m-t-0 header-title"><b>Edit Category </b></h4>
                                     <hr />
 
 
@@ -85,73 +89,21 @@ if (strlen($_SESSION['login']) == 0) {
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <!---Success Message--->
-                                        <?php if ($msg) { ?>
-                                        <div class="alert alert-success" role="alert">
-                                            <strong>Well done!</strong>
-                                            <?php echo htmlentities($msg); ?>
-                                        </div>
-                                        <?php } ?>
 
-                                        <!---Error Message--->
-                                        <?php if ($error) { ?>
-                                        <div class="alert alert-danger" role="alert">
-                                            <strong>Oh snap!</strong>
-                                            <?php echo htmlentities($error); ?>
-                                        </div>
-                                        <?php } ?>
-
-
-                                    </div>
-                                </div>
-
-
-
-
-
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <form class="form-horizontal" name="category" method="post">
-                                        
-                                            <div class="form-group">
-                                                <label class="col-md-2 control-label">Name Event</label>
-                                                <div class="col-md-10">
-                                                    <input type="text" class="form-control" value="" name="Name"
-                                                        required>
-                                                </div>
-                                                <label class="col-md-2 control-label">Date</label>
-                                                <div class="col-md-10">
-                                                    <input type="Date" class="form-control" value="" name="Date"
-                                                        required>
-                                                </div>
-                                                <label class="col-md-2 control-label">percent</label>
-                                                <div class="col-md-10">
-                                                    <input type="text" class="form-control" value="" name="percent"
-                                                        required>
-                                                </div>
+                                            <div class="alert alert-success" role="alert">
+                                                <strong>Well done!</strong> <?php display_message(); ?>
                                             </div>
-
-                                            <div class="form-group">
-                                                <label class="col-md-2 control-label">&nbsp;</label>
-                                                <div class="col-md-10">
-
-                                                    <button type="submit"
-                                                        class="btn btn-custom waves-effect waves-light btn-md"
-                                                        name="submit">
-                                                        Submit
-                                                    </button>
-                                                </div>
-                                            </div>
-
-                                        </form>
+                                        </div>
                                     </div>
 
-
+                                    <?php
+                                    $catid = intval($_GET['pid']);
+                                    edit_product_title($catid);
+                                    ?>
                                 </div>
-
                             </div>
                         </div>
-                    </div>
-                    <!-- end row -->
+                        <!-- end row -->
 
 
                     </div> <!-- container -->
@@ -161,7 +113,12 @@ if (strlen($_SESSION['login']) == 0) {
                 <?php include('includes/footer.php'); ?>
 
             </div>
+
+
         </div>
+        <!-- END wrapper -->
+
+
 
         <script>
             var resizefunc = [];

@@ -5,38 +5,7 @@ error_reporting(0);
 if (strlen($_SESSION['login']) == 0) {
     header('location:index.php');
 } else {
-
-    // For adding post  
-    if (isset($_POST['submit'])) {
-        $posttitle = $_POST['posttitle'];
-        $catid = $_POST['category'];
-        $subcatid = $_POST['subcategory'];
-        $postdetails = $_POST['postdescription'];
-        $arr = explode(" ", $posttitle);
-        $url = implode("-", $arr);
-        $imgfile = $_FILES["postimage"]["name"];
-        // get the image extension
-        $extension = substr($imgfile, strlen($imgfile) - 4, strlen($imgfile));
-        // allowed extensions
-        $allowed_extensions = array(".jpg", "jpeg", ".png", ".gif");
-        // Validation for allowed extensions .in_array() function searches an array for a specific value.
-        if (!in_array($extension, $allowed_extensions)) {
-            echo "<script>alert('Invalid format. Only jpg / jpeg/ png /gif format allowed');</script>";
-        } else {
-            //rename the image file
-            $imgnewfile = md5($imgfile) . $extension;
-            // Code for move image into directory
-            move_uploaded_file($_FILES["postimage"]["tmp_name"], "postimages/" . $imgnewfile);
-
-            $status = 1;
-            $query = mysqli_query($con, "insert into tblposts(PostTitle,CategoryId,SubCategoryId,PostDetails,PostUrl,Is_Active,PostImage) values('$posttitle','$catid','$subcatid','$postdetails','$url','$status','$imgnewfile')");
-            if ($query) {
-                $msg = "Post successfully added ";
-            } else {
-                $error = "Something went wrong . Please try again.";
-            }
-        }
-    }
+    add_product_adminpage();
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -182,11 +151,14 @@ if (strlen($_SESSION['login']) == 0) {
                                                 <label for="exampleInputEmail1">Số Lượng</label>
                                                 <input type="text" class="form-control" id="quantity" name="quantity" placeholder="Enter Quantity" required>
                                             </div>
-
+                                            <div class="form-group m-b-20">
+                                                <label for="exampleInputEmail1">Mô Tả Ngắn</label>
+                                                <input type="text" class="form-control" id="MTShort" name="MTShort" placeholder="Nhập Mô Tả Ngắn" required>
+                                            </div>
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <div class="card-box">
-                                                        <h4 class="m-b-30 m-t-0 header-title"><b>Post Details</b></h4>
+                                                        <h4 class="m-b-30 m-t-0 header-title"><b>Details</b></h4>
                                                         <textarea class="summernote" name="postdescription" required></textarea>
                                                     </div>
                                                 </div>

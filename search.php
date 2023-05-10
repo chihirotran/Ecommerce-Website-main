@@ -36,7 +36,7 @@
 			          while ($row = fetch_array($query)) {
 						$product = <<<DELIMETER
 						    <div class="col-4">
-						    	<a href="product_detail.php?id={$row['product_id']}"><img width='100' src="uploads/{$row['product_image']}"></a>
+						    	<a href="product_detail.php?id={$row['product_id']}"><img width='100' src="admin/postimages/{$row['product_image']}"></a>
 						    	<h4><a href="product_detail.php?id={$row['product_id']}">{$row['product_title']}</a></h4>
 						    	<p>&#36;{$row['product_price']}</p>
 						    	<p>{$row['product_short_desc']}</p>

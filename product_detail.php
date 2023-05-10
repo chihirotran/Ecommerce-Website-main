@@ -2,7 +2,7 @@
 
     <?php $query = query("SELECT * FROM products WHERE product_id = " . escape_string($_GET['id']) . " ");
           confirm($query);
-
+          $pid = escape_string($_GET['id']);
           $row = fetch_array($query);
           $product_id = $row["product_id"]; 
           $category = $row["product_category_id"];
@@ -29,7 +29,7 @@
         <div class="col-2">
           <?php
             $image = <<<DELIMETER
-            <img src="uploads/{$row['product_image']}" width="100%" id="ProductImg">
+            <img src="admin/postimages/{$row['product_image']}" width="100%" id="ProductImg">
             DELIMETER;
             echo $image;
             
@@ -68,7 +68,7 @@
                       if ($row['product_id'] != $product_id) {
                         $product = <<<DELIMETER
                             <div class="col-4">
-                            <a href="product_detail.php?id={$row['product_id']}"><img width='100' src="uploads/{$row['product_image']}"></a>
+                            <a href="product_detail.php?id={$row['product_id']}"><img width='100' src="admin/postimages/{$row['product_image']}"></a>
                             <h4>{$row['product_title']}</h4>
                             <div class="rating">
                                <i class="fa fa-star"></i>
@@ -89,6 +89,51 @@
            </div>
            
        </div>
+       <div class="small-container">
+   <div class="row row-2">
+       <h2>Comment</h2>
+   </div>
+    
+</div>
+<div class="small-container">
+  <div class="row">
+    <div class="col">
+      <h2>Add a comment</h2>
+      <form action="add_comment.php?pid=<?php echo $pid; ?>"  method="post">
+        <div class="form-group">
+          <label for="comment">Comment:</label>
+          <textarea id="comment" name="comment" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>   
+<div class="small-container">
+  <div class="row">
+    <?php 
+      $query = query("SELECT * FROM `comment` WHERE comment.product_id = " . escape_string($_GET['id']) . " ");
+      confirm($query);
+
+      while ($row = fetch_array($query)) {
+        if ($row['product_id'] == $product_id) {
+          $comment = <<<DELIMETER
+            <div class="col">
+              <div class="comment">
+                <h4 style="color: black; font-weight: bold; font-size: 18px;">{$row['NameUser']}</h4>
+                <p style="color: black;">{$row['Text']}</p> 
+              </div>
+            </div> 
+          DELIMETER;
+          echo $comment;
+        }
+      }
+    ?>
+  </div>
+</div>
+
+
+
   
      
     <?php include("footer.php") ?>
