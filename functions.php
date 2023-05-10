@@ -1192,16 +1192,24 @@ function Inset_product_oder(){
 
         }
 		
-		echo $id_user;
-		echo $Address;
-		echo $price;
-		echo $Payment_Type;
-		echo $current_time;
+		foreach($_SESSION as $key => $value) {
+			if(substr($key, 0, 8) == 'product_') {
+			  unset($_SESSION[$key]);  
+			}
+		  } 
+		  unset($_SESSION['total_price']);
+		  unset($_SESSION['total_number']);
 
-		// echo "*cac*";
-		echo $id12;
-		// echo "2cac2";
-		echo $Address4;
+		// echo $id_user;
+		// echo $Address;
+		// echo $price;
+		// echo $Payment_Type;
+		// echo $current_time;
+
+		// // echo "*cac*";
+		// echo $id12;
+		// // echo "2cac2";
+		// echo $Address4;
 		// redirect("homepage.php");
 	
 
@@ -1209,3 +1217,8 @@ function Inset_product_oder(){
 	// 	redirect("admin_index.php");
 	// }
 }
+// function Update_Oder_Pay(){
+// 	$query = query("UPDATE oder SET gmail_authentication=1 WHERE email='{$email}' AND username='{$username}'");
+// 	confirm($query);
+// 	redirect("homepage.php");
+// }

@@ -1,4 +1,10 @@
-<?php require_once("config.php"); ?>
+<?php require_once("config.php");
+if(isset($_GET['partnerCode'])){
+    if(isset($_GET['orderId'])){
+        // Update_Oder_Pay();
+    }
+}
+?>
 
 <!DOCTYPE html>
 <head>

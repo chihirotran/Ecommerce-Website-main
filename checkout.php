@@ -2,19 +2,25 @@
 if(isset($_POST['submit'])){
     $type = $_POST['pay_type'];
     if($type=="redirect"){
+        Inset_product_oder();
         redirect("VNPAY.php");
+        
     }
     if($type=="MOMOQR"){
+        Inset_product_oder();
         redirect("MOMO.php");
     }
     if($type=="MOMO"){
+        Inset_product_oder();
         redirect("MOMONH.php");
     }
     if($type=="credit"){
+        Inset_product_oder();
         redirect("momo.php");
     }
     if($type=="wire"){
         Inset_product_oder();
+        redirect("homepage.php");
     }
     
 }
