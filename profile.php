@@ -2,6 +2,21 @@
 <?php 
 
   if(isset($_GET['id'])) {
+    $id = $_GET['id'];
+    if (strpos($id, "GG.") !== false) {
+      $id_new = str_replace("GG.", "", $id);
+      $query = query("SELECT * FROM logingg WHERE ID  =   {$id_new} ");
+    confirm($query);
+
+    while($row = fetch_array($query)) {
+
+      $username = escape_string($row['name']);
+      $email = escape_string($row['email']);
+      $password = "";  
+    }
+    
+    update_user_GG($id_new);
+  } else {
     $query = query("SELECT * FROM users WHERE user_id = " . escape_string($_GET['id']) . " ");
     confirm($query);
 
@@ -13,6 +28,8 @@
     }
     
     update_user();
+  }
+    
   }
 
 ?>
@@ -72,6 +89,7 @@
                             <div class="form-group">
 
                             <input type="submit" name="update_user" class="btn btn-primary pull-right" value="Update" >
+                            <input type="submit" name="oder" class="btn btn-primary pull-right" value="Oder" >
                                
                            </div>
                </form>

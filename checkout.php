@@ -14,7 +14,7 @@ if(isset($_POST['submit'])){
         redirect("momo.php");
     }
     if($type=="wire"){
-        
+        Inset_product_oder();
     }
     
 }

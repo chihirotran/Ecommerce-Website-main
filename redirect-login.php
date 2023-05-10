@@ -22,16 +22,17 @@ if (isset($_GET['code'])) {
     $userInfo = $oauth->userinfo->get();
     $email = $userInfo->email;
     $name = $userInfo->name;
-    echo $name;
+    // echo $name;
     $row = get_count_user_google($email,$name);
-    echo $row;
-    echo $email;
+    // echo $row;
+    // echo $email;
         if($row==0){
           add_user_google($email,$name);
         }
         if($row>0){
-        $_SESSION['user_id'] ='GG'.get_id_user_google($email,$name);
+        $_SESSION['user_id'] ='GG.'.get_id_user_google($email,$name);
 				$_SESSION['username'] = $name;
+        echo get_id_user_google($email,$name);
         header('location:homepage.php');
         }
     

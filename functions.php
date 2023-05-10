@@ -174,7 +174,7 @@ function add_user_google($email, $name)
 function get_id_user_google($email, $name)
 {
 
-	$query = query("SELECT id FROM `logingg` WHERE `email`='{$email}' and `name`='{$name}'");
+	$query = query("SELECT ID FROM `logingg` WHERE `email`='{$email}' and `name`='{$name}'");
 	confirm($query);
 	while ($row = fetch_array($query)) {
 		$id_google = $row['ID'];
@@ -722,6 +722,25 @@ function update_user()
 		redirect("homepage.php");
 	}
 }
+function update_user_GG($id_new)
+{
+
+	if (isset($_POST['update_user'])) {
+
+		$username = escape_string($_POST['username']);
+		$email = escape_string($_POST['email']);
+		
+
+		$_SESSION['username'] = $username;
+
+		$query = "UPDATE logingg SET name = '{$username}' WHERE ID='{$id_new}' ";
+
+		$send_update_query = query($query);
+		confirm($send_update_query);
+		set_message("User has been updated");
+		redirect("homepage.php");
+	}
+}
 
 
 function get_categories()
@@ -940,6 +959,26 @@ function Show_Product_admin()
 		echo $product;
 	}
 }
+function Show_Product_oder_user()
+{
+
+	$query = query("SELECT *, categories.cat_title FROM `products`, categories WHERE products.product_category_id= categories.cat_id;");
+	confirm($query);
+	while ($row = fetch_array($query)) {
+		$product = <<<DELIMETER
+		<tr>
+			<td><b>{$row['product_title']}</b></td>
+			<td><b>{$row['cat_title']}</b></td>
+			<td><b>{$row['product_price']}</b></td>
+			<td><b>{$row['product_quantity']}</b></td>
+			<td><b><img src="postimages/{$row['product_image']}" width=100></b></td>
+			<td><a href="edit-product.php?pid={$row['product_id']}"><i class="fa fa-pencil" style="color: #29b6f6;"></i></a>
+				&nbsp;<a href="manage-posts.php?pid={$row['product_id']}&&action=del" onclick="return confirm('Do you reaaly want to delete ?')"> <i class="fa fa-trash-o" style="color: #f05050"></i></a> </td>
+		</tr>
+		DELIMETER;
+		echo $product;
+	}
+}
 function Show_Product_Sale_admin()
 {
 
@@ -1087,4 +1126,86 @@ function display_users()
 
 		echo $user;
 	}
+}
+function Inset_product_oder(){
+
+
+		$id_user = escape_string($_SESSION['user_id']);
+		$Address = escape_string($_POST['product_title']);
+		$Address1= escape_string($_POST['ward']);
+		$Address2= escape_string($_POST['district']);
+		$Address3= escape_string($_POST['city']);
+		$url1 ="https://provinces.open-api.vn/api/d/{$Address2}";
+		$url2 = "https://provinces.open-api.vn/api/p/{$Address3}";
+		$url3 ="https://provinces.open-api.vn/api/w/{$Address1}";
+		$data_d = file_get_contents($url1);
+		$data_d = json_decode($data_d, true);
+		$name1 = $data_d['name'];
+		$data_p = file_get_contents($url2);
+		$data_p = json_decode($data_p, true);
+		$name2 = $data_p['name'];
+		$data_w = file_get_contents($url3);
+		$data_w = json_decode($data_w, true);
+		$name3 = $data_w['name'];
+		$Address4=$Address.$name3.$name1.$name2;
+		$Payment_Type = escape_string($_POST['pay_type']);
+		$price = escape_string($_SESSION['total_price']);
+		$current_time = date('Y-m-d H:i:s');
+		$query = query("INSERT INTO `oder`( `id_user`, `price`, `Address`, `Payment_Type`,`date_oder`) VALUES ('{$id_user}','{$price}','{$Address4}','{$Payment_Type}','{$current_time}')");
+		confirm($query);
+		$select = query("SELECT * FROM `oder`WHERE id_user ='{$id_user}' AND Address= '{$Address4}' AND Payment_Type='{$Payment_Type}' AND date_oder = '{$current_time}'"); 
+		while($row = fetch_array($select)) {
+			$id12 = $row['ID'];
+            
+		}
+		$total = 0;
+
+       	$item_number = 0;
+		foreach ($_SESSION as $name => $value) {
+
+            if($value > 0) {
+
+                if (substr($name, 0, 8) == "product_") {
+
+                    $length = strlen($name) - 8;
+
+                    $id_oder = substr($name, 8, $length);
+
+                    $query = query("SELECT * FROM products WHERE product_id = " . escape_string($id_oder) . " ");
+                    confirm($query);
+
+
+					
+                    while($row = fetch_array($query)) {
+
+                        $sub = $row['product_price'] * $value;
+
+                        $item_number += $value;
+						$query_detail = query("INSERT INTO `oder_detail`( `products_id`, `price`, `quantity`, `oder_id`) VALUES ('{$row['product_id']}','{$sub}','{$item_number}','{$id12}')");
+                   		confirm($query_detail);
+
+                    }
+
+                }
+
+            }
+
+        }
+		
+		echo $id_user;
+		echo $Address;
+		echo $price;
+		echo $Payment_Type;
+		echo $current_time;
+
+		// echo "*cac*";
+		echo $id12;
+		// echo "2cac2";
+		echo $Address4;
+		// redirect("homepage.php");
+	
+
+	// if (isset($_POST['back'])) {
+	// 	redirect("admin_index.php");
+	// }
 }
