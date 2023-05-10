@@ -48,7 +48,7 @@ $extraData = "";
 //     $extraData = $_POST["extraData"];
 
     $requestId = time() . "";
-    $requestType = "captureWallet";
+    $requestType = "payWithATM";
     // $extraData = ($_POST["extraData"] ? $_POST["extraData"] : "");
     //before sign HMAC SHA256 signature
     $rawHash = "accessKey=" . $accessKey . "&amount=" . $amount . "&extraData=" . $extraData . "&ipnUrl=" . $ipnUrl . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&partnerCode=" . $partnerCode . "&redirectUrl=" . $redirectUrl . "&requestId=" . $requestId . "&requestType=" . $requestType;

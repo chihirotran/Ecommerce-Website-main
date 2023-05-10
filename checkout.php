@@ -4,8 +4,11 @@ if(isset($_POST['submit'])){
     if($type=="redirect"){
         redirect("VNPAY.php");
     }
-    if($type=="MOMO"){
+    if($type=="MOMOQR"){
         redirect("MOMO.php");
+    }
+    if($type=="MOMO"){
+        redirect("MOMONH.php");
     }
     if($type=="credit"){
         redirect("momo.php");
@@ -90,6 +93,7 @@ if(isset($_POST['submit'])){
 	                                                <option value="credit">Chuyển Khoản</option>
 	                                                <option value="wire">Tiền Mặt</option>
                                                     <option value="redirect">VNPAY</option>
+                                                    <option value="MOMOQR">MOMOQR</option>
                                                     <option value="MOMO">MOMO</option>
                                               </select>
                                         </div>
