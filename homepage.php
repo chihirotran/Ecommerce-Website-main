@@ -59,23 +59,7 @@ if(isset($_GET['partnerCode'])){
            
        </div>
          
-   <div class="offer">
-       <div class="small-container">
-           <div class="row">
-           <div class="col-2">
-               <img src="images/exclusive.png" class="offer-img">
-           </div>
-           <div class="col-2">
-               <p>Exclusively Available on Music Store</p>
-               <h1>Launchkey 61 MK3</h1>
-               <small>61 velocity sensitive keys, 16x RGB pads, pitch and mod wheels and bus powered.</small>
-               <br>
-               <a href="product_detail.php?id=13" class="btn">Buy Now &#8594;</a>
-           </div>
-       </div>
-       </div>
-       
-   </div>  
+   
 
    <br>
    <br>

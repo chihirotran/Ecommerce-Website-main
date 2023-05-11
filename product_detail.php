@@ -37,7 +37,7 @@
         </div>
         <div class="col-2">
             <h1><?php echo $row["product_title"]; ?></h1>
-            <h4 style="color: red;"><?php echo "&#36;" . $row["product_price"]; ?></h4>
+            <h4 style="color: red;"><?php echo  $row["product_price"]."VND;" ; ?></h4>
             
             <a href="cart.php?add=<?php echo $row['product_id']; ?>" class="btn">Add To Cart</a>
             
@@ -77,7 +77,7 @@
                                <i class="fa fa-star"></i>
                                <i class="fa fa-star-o"></i>
                            </div>
-                           <p style="color: red;">&#36;{$row['product_price']}</p> 
+                           <p style="color: red;">{$row['product_price']}VND</p> 
                        </div> 
                        DELIMETER;
                        echo $product;

@@ -88,12 +88,12 @@
 
                         $product = <<<DELIMETER
                         <tr>
-                            <td><img width='100' src="uploads/{$row['product_image']}"></td>
+                            <td><img width='100' src="admin/postimages/{$row['product_image']}"></td>
                             <td>
                                 <div class="cart-info">
                                         <div>
                                         <p><a href="product_detail.php?id={$row['product_id']}">{$row['product_title']}</a></p>
-                                        <small>Price: &#36;{$row['product_price']}</small><br>
+                                        <small>Price: {$row['product_price']}VND</small><br>
                                         <a href="cart.php?add={$row['product_id']}">Add &emsp;</a>
                                         <a href="cart.php?remove={$row['product_id']}">Remove &emsp;</a>
                                         <a href="cart.php?delete={$row['product_id']}">Delete</a>
@@ -102,7 +102,7 @@
                                 </div>
                             </td>
                             <td><p>$value</p></td>
-                            <td>&#36;$sub</td>
+                            <td>$sub VND</td>
                         </tr>
                         DELIMETER;
 

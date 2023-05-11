@@ -38,7 +38,7 @@
 						    <div class="col-4">
 						    	<a href="product_detail.php?id={$row['product_id']}"><img width='100' src="admin/postimages/{$row['product_image']}"></a>
 						    	<h4><a href="product_detail.php?id={$row['product_id']}">{$row['product_title']}</a></h4>
-						    	<p>&#36;{$row['product_price']}</p>
+						    	<p>{$row['product_price']}VND</p>
 						    	<p>{$row['product_short_desc']}</p>
 						        <a class="btn btn-primary" target="_blank" href="cart.php?add={$row['product_id']}">Add to cart</a>
 						    </div>

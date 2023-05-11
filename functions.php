@@ -59,9 +59,9 @@ function get_four_products()
 		if ($count < 8) {
 			$product = <<<DELIMETER
 		    <div class="col-4">
-		    	<a href="product_detail.php?id={$row['product_id']}"><img src="uploads/{$row['product_image']}"></a>
+		    	<a href="product_detail.php?id={$row['product_id']}"><img src="admin/postimages/{$row['product_image']}"></a>
 		    	<h4><a href="product_detail.php?id={$row['product_id']}">{$row['product_title']}</a></h4>
-		    	<p style="color: red;">&#36;{$row['product_price']}</p>
+		    	<p style="color: red;">{$row['product_price']}VND</p>
 		    	<p>{$row['product_short_desc']}</p>
 		        <a class="btn" href="cart.php?add={$row['product_id']}">Add to cart</a>
 		    </div>
@@ -74,7 +74,7 @@ function get_four_products()
 }
 function get_four_cate()
 {
-	$query = query("SELECT product_image , cat_title FROM `categories` , `products` WHERE products.product_category_id = categories.cat_id GROUP BY categories.cat_id;");
+	$query = query("SELECT product_image , cat_title, categories.cat_id FROM `categories` , `products` WHERE products.product_category_id = categories.cat_id GROUP BY categories.cat_id;");
 	$count = 0;
 	confirm($query);
 
@@ -82,9 +82,9 @@ function get_four_cate()
 
 		if ($count < 4) {
 			$product = <<<DELIMETER
-		    <div class="col-4" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(uploads/{$row['product_image']}) center center no-repeat; ; background-size: cover;display: flex;justify-content: center;align-items: center;">
+		    <div class="col-4" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(admin/postimages/{$row['product_image']}) center center no-repeat; ; background-size: cover;display: flex;justify-content: center;align-items: center;">
 				
-		    	<h4><a style="color: #f9f9f9;">{$row['cat_title']}</a></h4>
+		    	<h4><a href="category_page.php?id={$row['cat_id']}" style="color: #f9f9f9;">{$row['cat_title']}</a></h4>
 		    	
 		    </div>
 		DELIMETER;
@@ -104,9 +104,9 @@ function get_products()
 
 		$product = <<<DELIMETER
 		    <div class="col-4">
-		    	<a href="product_detail.php?id={$row['product_id']}"><img width='100' src="uploads/{$row['product_image']}"></a>
+		    	<a href="product_detail.php?id={$row['product_id']}"><img width='100' src="admin/postimages/{$row['product_image']}"></a>
 		    	<h4><a href="product_detail.php?id={$row['product_id']}">{$row['product_title']}</a></h4>
-		    	<p style="color: red;">&#36;{$row['product_price']}</p>
+		    	<p style="color: red;">{$row['product_price']}VND</p>
 		    	<p>{$row['product_short_desc']}</p>
 		        <a class="btn" href="cart.php?add={$row['product_id']}">Add to cart</a>
 		    </div>
@@ -552,11 +552,11 @@ function get_products_update_page()
 		$product = <<<DELIMETER
 		<tr>
 		    <td>{$row['product_id']}</td>
-		    <td><a href="product_detail.php?id={$row['product_id']}"><img src="uploads/{$row['product_image']}" width=100></td></a>
+		    <td><a href="product_detail.php?id={$row['product_id']}"><img src="admin/postimages/{$row['product_image']}" width=100></td></a>
 		    <td><a href="update_product.php?id={$row['product_id']}">{$row['product_title']}</a><br>
 		    </td>
 		    <td>{$category}</td>
-		    <td>&#36;{$row['product_price']}</td>
+		    <td>{$row['product_price']}VND</td>
 		    <td>{$row['product_quantity']}</td>
 		    <td><a class="btn" href="delete_product.php?id={$row['product_id']}">Remove</a></td>
 		</tr>
@@ -617,7 +617,7 @@ function time_sale_products()
 		    <div class="col-4">
 		    	<a href="product_detail.php?id={$row['product_id']}"><img src="admin/postimages/{$row['product_image']}"></a>
 		    	<h4><a href="product_detail.php?id={$row['product_id']}">{$row['product_title']}</a></h4>
-		    	<p style="color: red;">&#36;{$price_sale}</p>
+		    	<p style="color: red;">{$price_sale}VND</p>
 		    	<p>{$row['product_short_desc']}</p>
 		        <a class="btn" href="cart.php?add={$row['product_id']}">Add to cart</a>
 		    </div>
@@ -636,13 +636,13 @@ function get_category_products()
 	while ($row = fetch_array($query)) {
 
 		$product = <<<DELIMETER
-	// <div class="col-4">
-	// 	    	<a href="product_detail.php?id={$row['product_id']}"><img width='100' src="admin/postimages/{$row['product_image']}"></a>
-	// 	    	<h4><a href="product_detail.php?id={$row['product_id']}">{$row['product_title']}</a></h4>
-	// 	    	<p style="color: red;">&#36;{$row['product_price']}</p>
-	// 	    	<p>{$row['product_short_desc']}</p>
-	// 	        <a class="btn btn-primary" target="_blank" href="cart.php?add={$row['product_id']}">Add to cart</a>
-	// 	    </div>
+	 <div class="col-4">
+	 	    	<a href="product_detail.php?id={$row['product_id']}"><img width='100' src="admin/postimages/{$row['product_image']}"></a>
+	 	    	<h4><a href="product_detail.php?id={$row['product_id']}">{$row['product_title']}</a></h4>
+	 	    	<p style="color: red;">{$row['product_price']}VND</p>
+	 	    	<p>{$row['product_short_desc']}</p>
+	 	        <a class="btn btn-primary" target="_blank" href="cart.php?add={$row['product_id']}">Add to cart</a>
+	 	    </div>
 	DELIMETER;
 
 		echo $product;
@@ -886,7 +886,7 @@ function get_products_admin_page()
 		    <td><a href="edit-product.php?id={$row['product_id']}">{$row['product_title']}</a><br>
 		    </td>
 		    <td>{$category}</td>
-		    <td>&#36;{$row['product_price']}</td>
+		    <td>{$row['product_price']}VND</td>
 		    <td>{$row['product_quantity']}</td>
 		    <td><a class="btn" href="admin_delete_product.php?id={$row['product_id']}">Remove</a></td>
 		</tr>
@@ -898,19 +898,19 @@ function get_products_admin_page()
 function add_product_adminpage()
 {
 	if (isset($_POST['submit'])) {
-		$posttitle = escape_string($_POST['posttitle']);
-		$catid = escape_string($_POST['category']);
-		$Price2 = escape_string($_POST['Price']);
-		$quantity = escape_string($_POST['quantity']);
-		$product_description = escape_string($_POST['postdescription']);
-		$MTShort = escape_string($_POST['MTShort']);
+		$posttitle = escape_string($_POST['product_title']);
+		$catid = escape_string($_POST['product_category_id']);
+		$Price2 = escape_string($_POST['product_price']);
+		$quantity = escape_string($_POST['product_quantity']);
+		$product_description = escape_string($_POST['product_description']);
+		$MTShort = escape_string($_POST['product_short_desc']);
 		$arr = explode(" ", $posttitle);
 		$url = implode("-", $arr);
 		$imgfile = escape_string($_FILES["postimage"]["name"]);
 		// get the image extension
 		$extension = substr($imgfile, strlen($imgfile) - 4, strlen($imgfile));
 		// allowed extensions
-		$allowed_extensions = array(".jpg", "jpeg", ".png", ".gif");
+		$allowed_extensions = array(".jpg", "jpeg", ".png", ".gif", ".JGP");
 		// Validation for allowed extensions .in_array() function searches an array for a specific value.
 		if (!in_array($extension, $allowed_extensions)) {
 			echo "<script>alert('Invalid format. Only jpg / jpeg/ png /gif format allowed');</script>";
@@ -1192,13 +1192,13 @@ function Inset_product_oder(){
 
         }
 		
-		foreach($_SESSION as $key => $value) {
-			if(substr($key, 0, 8) == 'product_') {
-			  unset($_SESSION[$key]);  
-			}
-		  } 
-		  unset($_SESSION['total_price']);
-		  unset($_SESSION['total_number']);
+		// foreach($_SESSION as $key => $value) {
+		// 	if(substr($key, 0, 8) == 'product_') {
+		// 	  unset($_SESSION[$key]);  
+		// 	}
+		//   } 
+		//   unset($_SESSION['total_price']);
+		//   unset($_SESSION['total_number']);
 
 		// echo $id_user;
 		// echo $Address;

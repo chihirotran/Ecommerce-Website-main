@@ -32,7 +32,7 @@
 
 	<div class="small-container">
 	   <div class="row row-2">
-	   		<a class="btn btn-primary" target="_blank" href="update_product_page.php">Update Products</a>
+	   		
 
 	       <h2>Category: <?php echo $cat_title; ?></h2>
 

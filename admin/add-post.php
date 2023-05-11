@@ -127,14 +127,14 @@ if (strlen($_SESSION['login']) == 0) {
                                         <form name="addpost" method="post" enctype="multipart/form-data">
                                             <div class="form-group m-b-20">
                                                 <label for="exampleInputEmail1">Post Title</label>
-                                                <input type="text" class="form-control" id="posttitle" name="posttitle" placeholder="Enter title" required>
+                                                <input type="text" class="form-control" id="product_title" name="product_title" placeholder="Enter title" required>
                                             </div>
 
 
 
                                             <div class="form-group m-b-20">
                                                 <label for="exampleInputEmail1">Category</label>
-                                                <select class="form-control" name="category" id="category" onChange="getSubCat(this.value);" required>
+                                                <select class="form-control" name="product_category_id" id="product_category_id" onChange="getSubCat(this.value);" required>
                                                     <option value="">Select Category </option>
                                                     <?php
                                                     show_category_title_select();
@@ -145,21 +145,21 @@ if (strlen($_SESSION['login']) == 0) {
 
                                             <div class="form-group m-b-20">
                                                 <label for="exampleInputEmail1">Price</label>
-                                                <input type="text" class="form-control" id="Price" name="Price" placeholder="Enter Price" required>
+                                                <input type="text" class="form-control" id="product_price" name="product_price" placeholder="Enter Price" required>
                                             </div>
                                             <div class="form-group m-b-20">
                                                 <label for="exampleInputEmail1">Số Lượng</label>
-                                                <input type="text" class="form-control" id="quantity" name="quantity" placeholder="Enter Quantity" required>
+                                                <input type="text" class="form-control" id="product_quantity" name="product_quantity" placeholder="Enter Quantity" required>
                                             </div>
                                             <div class="form-group m-b-20">
                                                 <label for="exampleInputEmail1">Mô Tả Ngắn</label>
-                                                <input type="text" class="form-control" id="MTShort" name="MTShort" placeholder="Nhập Mô Tả Ngắn" required>
+                                                <input type="text" class="form-control" id="product_short_desc" name="product_short_desc" placeholder="Nhập Mô Tả Ngắn" required>
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <div class="card-box">
                                                         <h4 class="m-b-30 m-t-0 header-title"><b>Details</b></h4>
-                                                        <textarea class="summernote" name="postdescription" required></textarea>
+                                                        <textarea class="summernote" name="product_description" required></textarea>
                                                     </div>
                                                 </div>
                                             </div>

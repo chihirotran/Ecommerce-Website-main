@@ -20,7 +20,7 @@
 			
 		</div>
 	   <div class="row row-2">
-	   		<a class="btn" href="update_product_page.php">Update Products</a>
+	   		
 
 	       <h2>All Products</h2>
 

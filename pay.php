@@ -47,7 +47,7 @@
             </tr>
             <tr>
                 <td>Total</td>
-                <td>&#36;<?php echo isset($_SESSION['total_price']) ? $_SESSION['total_price'] : $_SESSION['total_price'] = "0"; ?></td>
+                <td><?php echo isset($_SESSION['total_price']) ? $_SESSION['total_price'] : $_SESSION['total_price'] = "0"; ?>VND</td>
             </tr>
             
         </table>
