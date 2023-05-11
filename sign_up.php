@@ -82,7 +82,7 @@
         <div class="col-2" style="padding-left: 500px;">
           <div class="form-container">
             <div class="form-btn">
-              <span>Sign Up</span>
+              <span>Đăng Kí </span>
             </div>
 
             <form class="" action="" method="post" enctype="multipart/form-data">
@@ -93,9 +93,9 @@
           
               ?>
 
-              <input type="text" name="username" placeholder="username"></label>
+              <input type="text" name="username" placeholder="Tên người dùng"></label>
               <input type="text" name="email" placeholder="e-mail"></label>
-              <input type="password" name="password" placeholder="password"></label>
+              <input type="password" name="password" placeholder="Mật khẩu"></label>
               
               
               <input type="submit" name="add_user" id="signup" class="btn btn-primary">
@@ -107,7 +107,7 @@
 
       </div>
       <br>
-      <h5 style="text-align: center;">If you already have an account <a href="login_page.php"> Login</a></h5>
+      <h5 style="text-align: center; margin-left: 50px; font-family:Verdana, Geneva, Tahoma, sans-serif;">Đã có tài khoản rồi hả?<a href="login_page.php"> Đăng nhập thôi!</a></h5>
     </div>
   </div>
 

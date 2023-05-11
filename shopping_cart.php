@@ -51,8 +51,8 @@
         </table>
     </div>
     <div class="total-price">
-       <a href="products.php" class="btn">Continue</a>
-        <a href="checkout.php" class="btn">Proceed to checkout &#8594;</a>
+       <a href="products.php" class="btn" style="margin-right:7px;" >Continue</a>
+        <a href="checkout.php" class="btn" >Proceed to checkout &#8594;</a>
     </div>
     
 </div>

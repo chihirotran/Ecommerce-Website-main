@@ -22,7 +22,7 @@
 	   <div class="row row-2">
 	   		
 
-	       <h2>All Products</h2>
+	       <h2 style="font-family:sans-serif; font-weight:700;">Các Sản Phẩm Hiện Có</h2>
 
 	       <div class="row">
 	       	<div class="col" style="padding-right: 50px;">

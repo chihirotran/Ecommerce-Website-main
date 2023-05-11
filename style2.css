@@ -19,12 +19,13 @@
     align-items: center;
     padding-left: 10px;
     background-color: #ffcc3b;
+    
 }
 
 .btn {
     display: inline-block;
-    background: #ccbca4;
-    color: #fff;
+    background: #ffcc3b;
+    color: black;
     padding: 8px 30px;
     margin: 30px 0;
     border-radius: 30px;
@@ -32,7 +33,9 @@
 }
 
 .btn:hover {
-    background: #563434;
+    background: #9b7200;
+    color: white;
+    
 }
 
 
@@ -52,16 +55,20 @@
 
 th{
     text-align: left;
-    padding: 5px;
-    color: #fff;
-    background: #7f44b7;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5;
+    padding-bottom: 5;
+    color: black;
+    background: #ffcc3b;
     font-weight: normal;
 }
 
 .total-price table{
-    border-top: 3px solid #7f44b7;
+    border-top: 3px solid #a18129;
     width: 100%;
-    max-width: 350px;
+    max-width: 400px;
+    
 }
 
 
@@ -155,12 +162,14 @@ form a{
 
 
 .dropbtn {
-  background-color: #7f44b7;
-  color: white;
+  background-color: #ffcc3b;
+  color: black;
   padding: 16px;
   font-size: 16px;
   border: none;
   cursor: pointer;
+  border-radius: 30px;
+  transition: background 0.5s;
 }
 
 .dropdown {
@@ -191,5 +200,7 @@ form a{
 }
 
 .dropdown:hover .dropbtn {
-  background-color: #3d1266;
+  background-color: #ffcc3b;
+  background: #9b7200;
+  color: white;
 }

@@ -58,7 +58,7 @@
        <div class="row">
          
           <div class="col-2">
-             <img src="images/image1.png" width="100%">
+             <img src="images/acc.png" width="50%" style="margin-left: 250px;">
           </div>
           
            <div class="col-2">

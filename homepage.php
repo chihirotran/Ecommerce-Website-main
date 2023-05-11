@@ -22,10 +22,18 @@ if(isset($_GET['partnerCode'])){
        <div class="container">
             <?php include("navbar.php") ?>        
            <div class="row">
-                <div class="col-2">
-                    <h1>Decorate Your Home!<br>With LED!</h1>
-                    <p> Everyone wants their house to be painted with many impressive shades of light and more, so what are you waiting for?</p>
-                    <a href="products.php" class="btn">Explore Now &#8594;</a>
+                <div class="col-2" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                    <h1>Trang Trí Nhà Nạn!<br>Với Vô Vàn Sắc Màu LED!</h1>
+                    <p> Đâu ai muốn 1 căn nhà u ám vô vị không màu sắc đâu chứ, vậy bạn còn chờ gì nữa mà không xem ngay tại cửa hàng LEDMSTORE?</p>
+                    <a href="products.php" class="btn" style="font-family:
+                     'Trebuchet MS', 
+                     'Lucida Sans Unicode', 
+                     'Lucida Grande', 
+                     'Lucida Sans', 
+                     Arial, sans-serif; 
+                     font-weight:900;
+                     font-size:20px;
+                     ">Khám Phá Ngay &#8594;</a>
                 </div>
                 <div class="col-2">
                     <img src="images/logo.png">
@@ -36,7 +44,7 @@ if(isset($_GET['partnerCode'])){
        </div>
        </div>
        <div class="small-container" id="TimeSale">
-        <h2 class="title">Time Sale</h2>
+        <h2 class="title" style="font-family: sans-serif;">Thời Gian Ưu Đãi, Săn ngay kẻo hết!</h2>
              <div class="row">
              	<?php time_sale(); ?>
                  <?php time_sale_products(); ?>
