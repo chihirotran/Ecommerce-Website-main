@@ -30,7 +30,7 @@ if (isset($_GET['code'])) {
           add_user_google($email,$name);
         }
         if($row>0){
-        $_SESSION['user_id'] ='GG.'.get_id_user_google($email,$name);
+        $_SESSION['user_id'] ='GG'.".".get_id_user_google($email,$name);
 				$_SESSION['username'] = $name;
         echo get_id_user_google($email,$name);
         header('location:homepage.php');
