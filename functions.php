@@ -1192,13 +1192,13 @@ function Inset_product_oder(){
 
         }
 		
-		// foreach($_SESSION as $key => $value) {
-		// 	if(substr($key, 0, 8) == 'product_') {
-		// 	  unset($_SESSION[$key]);  
-		// 	}
-		//   } 
-		//   unset($_SESSION['total_price']);
-		//   unset($_SESSION['total_number']);
+		foreach($_SESSION as $key => $value) {
+			if(substr($key, 0, 8) == 'product_') {
+			  unset($_SESSION[$key]);  
+			}
+		  } 
+		  unset($_SESSION['total_price']);
+		  unset($_SESSION['total_number']);
 
 		// echo $id_user;
 		// echo $Address;
