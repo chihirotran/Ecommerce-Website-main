@@ -28,7 +28,11 @@ if (strlen($_SESSION['login']) == 0) {
         <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="../plugins/switchery/switchery.min.css">
         <script src="assets/js/modernizr.min.js"></script>
-
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+            google.charts.load('current', {'packages':['corechart', 'line']}); // Load thư viện
+            google.charts.setOnLoadCallback(drawDashboard); // Callback function để vẽ biểu đồ
+        </script>
     </head>
 
 
@@ -95,17 +99,17 @@ if (strlen($_SESSION['login']) == 0) {
                         <!-- end row -->
 
                         <div class="row">
-                            <a href="manage-categories.php">
+                            <a href="manage-subcategories.php">
                                 <div class="col-lg-4 col-md-4 col-sm-6">
                                     <div class="card-box widget-box-one">
                                         <i class="mdi mdi-chart-areaspline widget-one-icon"></i>
                                         <div class="wigdet-one-content">
                                             <p class="m-0 text-uppercase font-600 font-secondary text-overflow"
-                                                title="Statistics">Categories Listed</p>
+                                                title="Statistics">Tổng Doanh Thu</p>
                                            
 
                                             <h2>
-                                               
+                                               <?php Get_Tong_Thu_Nhap()?>VND
                                             </h2>
 
                                         </div>
@@ -118,10 +122,10 @@ if (strlen($_SESSION['login']) == 0) {
                                         <i class="mdi mdi-layers widget-one-icon"></i>
                                         <div class="wigdet-one-content">
                                             <p class="m-0 text-uppercase font-600 font-secondary text-overflow"
-                                                title="User This Month">Listed Subcategories</p>
+                                                title="User This Month">Tổng Doanh Thu Tháng Này</p>
                                             
                                             <h2>
-                                                
+                                            <?php Get_Tong_Thu_Nhap_Thang()?>VND
                                             </h2>
 
                                         </div>
@@ -135,10 +139,10 @@ if (strlen($_SESSION['login']) == 0) {
                                         <i class="mdi mdi-layers widget-one-icon"></i>
                                         <div class="wigdet-one-content">
                                             <p class="m-0 text-uppercase font-600 font-secondary text-overflow"
-                                                title="User This Month">Live News</p>
+                                                title="User This Month">Tổng Sản Phẩm</p>
                                             
                                             <h2>
-                                                
+                                            <?php Get_Tong_San_Pham()?>
                                             </h2>
 
                                         </div>
@@ -158,10 +162,11 @@ if (strlen($_SESSION['login']) == 0) {
                                         <i class="mdi mdi-layers widget-one-icon"></i>
                                         <div class="wigdet-one-content">
                                             <p class="m-0 text-uppercase font-600 font-secondary text-overflow"
-                                                title="User This Month">Trash News</p>
+                                                title="User This Month">Bình Luận Mới</p>
                                             
                                             <h2>
-                                               
+                                            <?php Get_News_Comment()?>
+
                                             </h2>
 
                                         </div>
@@ -169,6 +174,8 @@ if (strlen($_SESSION['login']) == 0) {
                                 </div>
                             </a>
                         </div>
+                        <? Draw_Dashboard()?>
+                        
 
                     </div> <!-- container -->
 

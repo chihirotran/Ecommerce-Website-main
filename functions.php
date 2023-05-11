@@ -1222,3 +1222,155 @@ function Inset_product_oder(){
 // 	confirm($query);
 // 	redirect("homepage.php");
 // }
+
+function Get_Manage_Comments(){
+	$query = query("SELECT * FROM `comment`,products WHERE comment.product_id=products.product_id;");
+	confirm($query);
+	$cnt =0;
+	while ($row = fetch_array($query)) {
+		$st = $row['Start'];
+		if ($st == 1) {
+			$sta = 'Da Duyet';
+		}
+		else {
+			$sta = 'Chua Duyet';
+		}
+		$comment = <<<DELIMETER
+		<tr>                                                            
+			<td>{$row['NameUser']}</td>
+			<td>{$row['Text']}</td>
+			
+			<td>$sta</td>
+			<td><a href="../product_detail.php?id={$row['product_id']}" ">{$row['product_title']}</a></td>
+			<td>{$row['date_comment']}</td>
+			<td>
+				<a href="manage-comments.php?appid={$row['COM_ID']}" title="Duyet"><i class="ion-arrow-return-right" style="color: #29b6f6;"></i></a>
+				&nbsp;<a href="manage-comments.php?rid={$row['COM_ID']}&&action=del"> <i class="fa fa-trash-o" style="color: #f05050"></i></a>
+			</td>
+		</tr>
+		DELIMETER;
+		$cnt ++;
+		echo $comment;
+	}
+	
+}
+function Duyet_comment(){
+	if ($_GET['appid']) {
+        $id = escape_string($_GET['appid']);
+        $query = query("update comment set Start='1' where COM_ID='$id'");
+        confirm($query);
+    }
+}
+function Delete_comment(){
+	if ($_GET['action'] == 'del' && $_GET['rid']) {
+        $id = escape_string($_GET['rid']);
+        $query = query("delete from  comment  where COM_ID='$id'");
+        confirm($query);
+    }
+}
+function Get_mamage_oder_admin(){
+	$query = query("SELECT * FROM `oder` ORDER BY `oder`.`date_oder` DESC");
+	confirm($query);
+	$cnt =0;
+	while ($row = fetch_array($query)) {
+		$st = $row['Pay'];
+		if ($st == 1) {
+			$sta = 'Da Duyet';
+		}
+		else {
+			$sta = 'Chua Duyet';
+		}	
+		$comment = <<<DELIMETER
+		<tr> 
+			<td onclick="window.location.href='get_oder-detail.php?oid={$row['ID']}'">{$row['ID']}</td>                                                           
+			<td onclick="window.location.href='get_oder-detail.php?oid={$row['ID']}'">{$row['id_user']}</td>
+			<td onclick="window.location.href='get_oder-detail.php?oid={$row['ID']}'">{$row['price']}</td>
+			<td onclick="window.location.href='get_oder-detail.php?oid={$row['ID']}'">{$row['date_oder']}</td>
+			<td onclick="window.location.href='get_oder-detail.php?oid={$row['ID']}'">{$row['Address']}</td>
+			<td onclick="window.location.href='get_oder-detail.php?oid={$row['ID']}'"> {$row['Payment_Type']}</td>
+			<td>$sta</td>
+			<td>
+				<a href="manage-subcategories.php?appid={$row['ID']}" title="Duyet"><i class="ion-arrow-return-right" style="color: #29b6f6;"></i></a>
+				&nbsp;<a href="manage-subcategories.php?rid={$row['COM_ID']}&&action=del"> <i class="fa fa-trash-o" style="color: #f05050"></i></a>
+			</td>
+		</tr>
+		DELIMETER;
+		$cnt ++;
+		echo $comment;
+	}
+}
+function Duyet_oder_manager(){
+	if ($_GET['appid']) {
+        $id = escape_string($_GET['appid']);
+        $query = query("update oder set Pay='1' where ID='$id'");
+        confirm($query);
+    }
+}
+function Delete_oder_manager(){
+	if ($_GET['action'] == 'del' && $_GET['rid']) {
+        $id = escape_string($_GET['rid']);
+        $query = query("delete from  oder  where ID='$id'");
+        confirm($query);
+    }
+}
+function Get_oder_detail_admin(){
+	$oder_id = escape_string($_GET['oid']);
+	$query = query("SELECT * FROM `oder_detail`,products WHERE products.product_id = oder_detail.products_id AND oder_detail.oder_id ={$oder_id};");
+	confirm($query);
+	$cnt =0;
+	while ($row = fetch_array($query)) {	
+		$comment = <<<DELIMETER
+		<tr> 
+			<td>{$row['oder_id']}</td>                                                           
+			<td>{$row['product_title']}</td>
+			<td>{$row['quantity']}</td>
+			<td><b><img src="postimages/{$row['product_image']}" width=100></b></td>
+		</tr>
+		DELIMETER;
+		$cnt ++;
+		echo $comment;
+	}
+}
+function Get_Tong_Thu_Nhap(){
+	
+	$query = query("SELECT SUM(price) AS total_price FROM oder;");
+	confirm($query);
+	$cnt =0;
+	while ($row = fetch_array($query)) {	
+		$total = $row['total_price'];
+		echo $total;
+	}
+}
+function Get_Tong_Thu_Nhap_Thang(){
+	
+	$query = query("SELECT SUM(price) AS total_price FROM oder WHERE month(date_oder)= month(NOW());");
+	confirm($query);
+	$cnt =0;
+	while ($row = fetch_array($query)) {	
+		$total = $row['total_price'];
+		echo $total;
+	}
+}
+function Get_Tong_San_Pham(){
+	
+	$query = query("SELECT COUNT(*) AS Tong FROM products;");
+	confirm($query);
+	$cnt =0;
+	while ($row = fetch_array($query)) {	
+		$total = $row['Tong'];
+		echo $total;
+	}
+}
+function Get_News_Comment(){
+	
+	$query = query("SELECT COUNT(*) AS tong FROM comment WHERE date_comment >= DATE_SUB(NOW(), INTERVAL 1 WEEK) AND Start=0;");
+	confirm($query);
+	$cnt =0;
+	while ($row = fetch_array($query)) {	
+		$total = $row['tong'];
+		echo $total;
+	}
+}
+function Draw_Dashboard(){
+	
+}

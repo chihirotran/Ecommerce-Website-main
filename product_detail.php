@@ -112,7 +112,7 @@
 <div class="small-container">
   <div class="row">
     <?php 
-      $query = query("SELECT * FROM `comment` WHERE comment.product_id = " . escape_string($_GET['id']) . " ");
+      $query = query("SELECT * FROM `comment` WHERE comment.product_id = " . escape_string($_GET['id']) . " AND comment.Start='1' ");
       confirm($query);
 
       while ($row = fetch_array($query)) {

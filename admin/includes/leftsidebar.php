@@ -28,37 +28,37 @@
 
                 <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-format-list-bulleted"></i>
-                        <span>Sub Category </span> <span class="menu-arrow"></span></a>
+                        <span>Oder </span> <span class="menu-arrow"></span></a>
                     <ul class="list-unstyled">
-                        <li><a href="add-subcategory.php">Add Sub Category</a></li>
-                        <li><a href="manage-subcategories.php">Manage Sub Category</a></li>
+                        
+                        <li><a href="manage-subcategories.php">Manage Oder</a></li>
                     </ul>
                 </li>
                 <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-format-list-bulleted"></i>
-                        <span> Posts </span> <span class="menu-arrow"></span></a>
+                        <span> Product </span> <span class="menu-arrow"></span></a>
                     <ul class="list-unstyled">
-                        <li><a href="add-post.php">Add Posts</a></li>
-                        <li><a href="manage-posts.php">Manage Posts</a></li>
-                        <li><a href="trash-posts.php">Trash Posts</a></li>
+                        <li><a href="add-post.php">Add Product</a></li>
+                        <li><a href="manage-posts.php">Manage Product</a></li>
+                        
                     </ul>
                 </li>
 
 
                 <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-format-list-bulleted"></i>
-                        <span> Pages </span> <span class="menu-arrow"></span></a>
+                        <span> Event </span> <span class="menu-arrow"></span></a>
                     <ul class="list-unstyled">
-                        <li><a href="aboutus.php">About us</a></li>
-                        <li><a href="contactus.php">Contact us</a></li>
+                        <li><a href="aboutus.php">ADD Event</a></li>
+                        <li><a href="contactus.php">ADD Product to Envent</a></li>
                     </ul>
                 </li>
                 <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-format-list-bulleted"></i>
                         <span> Comments </span> <span class="menu-arrow"></span></a>
                     <ul class="list-unstyled">
-                        <li><a href="unapprove-comment.php">Waiting for Approval </a></li>
-                        <li><a href="manage-comments.php">Approved Comments</a></li>
+                        <!-- <li><a href="unapprove-comment.php">Manage Comments</a></li> -->
+                        <li><a href="manage-comments.php">Manage Comments</a></li>
                     </ul>
                 </li>
 

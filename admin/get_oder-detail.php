@@ -5,11 +5,8 @@ error_reporting(0);
 if (strlen($_SESSION['login']) == 0) {
     header('location:index.php');
 } else {
-    // Code for restore
-    Duyet_comment();
-
-    // Code for deletion
-    Delete_comment();
+    Duyet_oder_manager();
+    Delete_oder_manager();
 
 ?>
     <!DOCTYPE html>
@@ -17,7 +14,7 @@ if (strlen($_SESSION['login']) == 0) {
 
     <head>
 
-        <title> | Manage Cooments</title>
+        <title> News | Manage SubCategories</title>
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="assets/css/core.css" rel="stylesheet" type="text/css" />
         <link href="assets/css/components.css" rel="stylesheet" type="text/css" />
@@ -57,16 +54,16 @@ if (strlen($_SESSION['login']) == 0) {
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="page-title-box">
-                                    <h4 class="page-title">Manage Approved Comments</h4>
+                                    <h4 class="page-title">Manage SubCategories</h4>
                                     <ol class="breadcrumb p-0 m-0">
                                         <li>
                                             <a href="#">Admin</a>
                                         </li>
                                         <li>
-                                            <a href="#">Comments </a>
+                                            <a href="#">SubCategory </a>
                                         </li>
                                         <li class="active">
-                                            Approved Comments
+                                            Manage SubCategories
                                         </li>
                                     </ol>
                                     <div class="clearfix"></div>
@@ -93,87 +90,34 @@ if (strlen($_SESSION['login']) == 0) {
 
 
                             </div>
-
-
-
-
-
-
-
-
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="demo-box m-t-20">
-
-                                        <div class="table-responsive">
-                                            <table class="table m-0 table-colored-bordered table-bordered-primary">
-                                                <thead>
-                                                    <tr>
-                                                        
-                                                        <th> Name</th>
-                                                        <th width="300">Comment</th>
-                                                        <th>Status</th>
-                                                        <th>Name Product</th>
-                                                        <th>Comment Date</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php Get_Manage_Comments();?>
-                                                </tbody>
-
-                                            </table>
-                                        </div>
-
-
-
-
-                                    </div>
-
-                                </div>
-
-
-                            </div>
-                            <!--- end row -->
-
-
-
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="demo-box m-t-20">
                                         <div class="m-b-30">
 
+                                        <h4><i class="fa fa-file"></i> Manage Oder</h4>
 
                                         </div>
 
-
-
-
-
+                                        <div class="table-responsive">
+                                            <table class="table m-0 table-colored-bordered table-bordered-danger">
+                                                <thead>
+                                                    <tr>
+                                                        <th>OderID</th>
+                                                        <th>Product Title</th>
+                                                        <th>quantity</th>
+                                                        <th>Img</th>
+                                                        
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                   <?php Get_oder_detail_admin();?>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
-
                                 </div>
-
-
                             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                         </div> <!-- container -->
 
                     </div> <!-- content -->
