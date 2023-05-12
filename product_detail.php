@@ -13,7 +13,7 @@
 <!DOCTYPE html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Details</title>
+    <title>Chi Tiết Sản Phẩm</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -39,9 +39,9 @@
             <h1><?php echo $row["product_title"]; ?></h1>
             <h4 style="color: red;"><?php echo  $row["product_price"]."VND;" ; ?></h4>
             
-            <a href="cart.php?add=<?php echo $row['product_id']; ?>" class="btn">Add To Cart</a>
+            <a href="cart.php?add=<?php echo $row['product_id']; ?>" class="btn">Thêm Vào Giỏ Hàng</a>
             
-            <h3>PRODUCT DESCRIPTION <i class="fa fa-indent"></i></h3>
+            <h3>Mô Tả <i class="fa fa-indent"></i></h3>
             <br>
             <p><?php echo $row["product_description"]; ?></p>
         </div>
@@ -50,7 +50,7 @@
 
 <div class="small-container">
    <div class="row row-2">
-       <h2>Related Products</h2>
+       <h2>Sản Phẩm Liên Quan</h2>
    </div>
     
 </div>
@@ -91,20 +91,20 @@
        </div>
        <div class="small-container">
    <div class="row row-2">
-       <h2>Comment</h2>
+       <h2>Bình Luận</h2>
    </div>
     
 </div>
 <div class="small-container">
   <div class="row">
     <div class="col">
-      <h2>Add a comment</h2>
+      
       <form action="add_comment.php?pid=<?php echo $pid; ?>"  method="post">
         <div class="form-group">
-          <label for="comment">Comment:</label>
+          <label for="comment">Bình Luận:</label>
           <textarea id="comment" name="comment" rows="4" required></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Đăng</button>
       </form>
     </div>
   </div>
