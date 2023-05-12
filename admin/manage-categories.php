@@ -30,7 +30,7 @@ if (strlen($_SESSION['login']) == 0) {
 
     <head>
 
-        <title> | Manage Categories</title>
+        <title> LEDMSTORE | Quản Lý Danh Mục</title>
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="assets/css/core.css" rel="stylesheet" type="text/css" />
         <link href="assets/css/components.css" rel="stylesheet" type="text/css" />
@@ -45,84 +45,47 @@ if (strlen($_SESSION['login']) == 0) {
 
 
     <body class="fixed-left">
-
-        <!-- Begin page -->
         <div id="wrapper">
-
-            <!-- Top Bar Start -->
             <?php include('includes/topheader.php'); ?>
-
-            <!-- ========== Left Sidebar Start ========== -->
             <?php include('includes/leftsidebar.php'); ?>
-            <!-- Left Sidebar End -->
-
-
-
-            <!-- ============================================================== -->
-            <!-- Start right Content here -->
-            <!-- ============================================================== -->
             <div class="content-page">
-                <!-- Start content -->
                 <div class="content">
                     <div class="container">
-
-
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="page-title-box">
-                                    <h4 class="page-title">Manage Categories</h4>
+                                    <h4 class="page-title">Quản Lý</h4>
                                     <ol class="breadcrumb p-0 m-0">
                                         <li>
                                             <a href="#">Admin</a>
                                         </li>
                                         <li>
-                                            <a href="#">Category </a>
+                                            <a href="#">Danh Mục</a>
                                         </li>
                                         <li class="active">
-                                            Manage Categories
+                                            Quản Lý Danh Mục
                                         </li>
                                     </ol>
                                     <div class="clearfix"></div>
                                 </div>
                             </div>
                         </div>
-                        <!-- end row -->
-
-
                         <div class="row">
-                            <div class="col-sm-6">
-
-                                <?php if ($msg) { ?>
-                                    <div class="alert alert-success" role="alert">
-                                        <strong>Well done!</strong> <?php echo htmlentities($msg); ?>
-                                    </div>
-                                <?php } ?>
-
-                                <?php if ($delmsg) { ?>
-                                    <div class="alert alert-danger" role="alert">
-                                        <strong>Oh snap!</strong> <?php echo htmlentities($delmsg); ?>
-                                    </div>
-                                <?php } ?>
-
-
-                            </div>
-
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="demo-box m-t-20">
                                         <div class="m-b-30">
                                             <a href="add-category.php">
-                                                <button id="addToTable" class="btn btn-success waves-effect waves-light">Add <i class="mdi mdi-plus-circle-outline"></i></button>
+                                                <button id="addToTable" class="btn btn-success waves-effect waves-light">Thêm<i class="mdi mdi-plus-circle-outline"></i></button>
                                             </a>
                                         </div>
-
                                         <div class="table-responsive">
                                             <table class="table m-0 table-colored-bordered table-bordered-primary">
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
-                                                        <th> Category</th>
-                                                        <th>Action</th>
+                                                        <th> Tên Danh Mục</th>
+                                                        <th>Tên Hành Động</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -131,37 +94,19 @@ if (strlen($_SESSION['login']) == 0) {
                                             }
                                                 ?>
                                                 </tbody>
-
                                             </table>
                                         </div>
-
-
-
-
                                     </div>
-
                                 </div>
-
-
                             </div>
-                            <!--- end row -->
-
-                        </div> <!-- container -->
-
-                    </div> <!-- content -->
+                        </div>
+                    </div>
                     <?php include('includes/footer.php'); ?>
                 </div>
-
             </div>
-            <!-- END wrapper -->
-
-
-
             <script>
                 var resizefunc = [];
             </script>
-
-            <!-- jQuery  -->
             <script src="assets/js/jquery.min.js"></script>
             <script src="assets/js/bootstrap.min.js"></script>
             <script src="assets/js/detect.js"></script>
@@ -171,8 +116,6 @@ if (strlen($_SESSION['login']) == 0) {
             <script src="assets/js/jquery.slimscroll.js"></script>
             <script src="assets/js/jquery.scrollTo.min.js"></script>
             <script src="../plugins/switchery/switchery.min.js"></script>
-
-            <!-- App js -->
             <script src="assets/js/jquery.core.js"></script>
             <script src="assets/js/jquery.app.js"></script>
 

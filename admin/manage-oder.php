@@ -54,48 +54,32 @@ if (strlen($_SESSION['login']) == 0) {
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="page-title-box">
-                                    <h4 class="page-title">Manage SubCategories</h4>
+                                    <h4 class="page-title">Quản Lý Đơn Hàng</h4>
                                     <ol class="breadcrumb p-0 m-0">
                                         <li>
                                             <a href="#">Admin</a>
                                         </li>
                                         <li>
-                                            <a href="#">SubCategory </a>
+                                            <a href="#">Đơn Hàng </a>
                                         </li>
                                         <li class="active">
-                                            Manage SubCategories
+                                        Quản Lý Đơn Hàng
                                         </li>
                                     </ol>
                                     <div class="clearfix"></div>
                                 </div>
                             </div>
                         </div>
-                        <!-- end row -->
+
 
 
                         <div class="row">
-                            <div class="col-sm-6">
-
-                                <?php if ($msg) { ?>
-                                    <div class="alert alert-success" role="alert">
-                                        <strong>Well done!</strong> <?php echo htmlentities($msg); ?>
-                                    </div>
-                                <?php } ?>
-
-                                <?php if ($delmsg) { ?>
-                                    <div class="alert alert-danger" role="alert">
-                                        <strong>Oh snap!</strong> <?php echo htmlentities($delmsg); ?>
-                                    </div>
-                                <?php } ?>
-
-
-                            </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="demo-box m-t-20">
                                         <div class="m-b-30">
 
-                                            <h4><i class="fa fa-trash-o"></i> Deleted SubCategories</h4>
+                                            <h4><i class="fa fa-file"></i> Quản Lý Đơn Hàng</h4>
 
                                         </div>
 
@@ -103,9 +87,14 @@ if (strlen($_SESSION['login']) == 0) {
                                             <table class="table m-0 table-colored-bordered table-bordered-danger">
                                                 <thead>
                                                     <tr>
-                                                        <th>OderID</th>
-                                                        <th>Name Product</th>
-                                                        <th>Quantity</th>
+                                                        <th>#</th>
+                                                        <th>ID</th>
+                                                        <th>Tổng Tiền</th>
+                                                        <th>Ngày Đặt</th>
+                                                        <th>Địa Chỉ</th>
+                                                        <th>Kiểu Thanh Toán</th>
+                                                        <th>Xác Thực</th>
+                                                        <th>Hành Động</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -141,8 +130,6 @@ if (strlen($_SESSION['login']) == 0) {
             <script src="assets/js/jquery.slimscroll.js"></script>
             <script src="assets/js/jquery.scrollTo.min.js"></script>
             <script src="../plugins/switchery/switchery.min.js"></script>
-
-            <!-- App js -->
             <script src="assets/js/jquery.core.js"></script>
             <script src="assets/js/jquery.app.js"></script>
 

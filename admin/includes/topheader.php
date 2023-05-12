@@ -1,20 +1,12 @@
             <div class="topbar">
 
-                <!-- LOGO -->
+
                 <div class="topbar-left">
-                    <a href="index.html" class="logo"><span>NEWS<span>PORTAL</span></span><i class="mdi mdi-layers"></i></a>
-                    <!-- Image logo -->
-                    <!--<a href="index.html" class="logo">-->
-                        <!--<span>-->
-                            <!--<img src="assets/images/logo.png" alt="" height="30">-->
-                        <!--</span>-->
-                        <!--<i>-->
-                            <!--<img src="assets/images/logo_sm.png" alt="" height="28">-->
-                        <!--</i>-->
-                    <!--</a>-->
+                    <a href="dashboard.php" class="logo"><span>LEDMD<span>STORE</span></span><i class="mdi mdi-layers"></i></a>
+                    
                 </div>
 
-                <!-- Button mobile view to collapse sidebar menu -->
+
                 <div class="navbar navbar-default" role="navigation">
                     <div class="container">
 
@@ -28,8 +20,6 @@
                      
                     
                         </ul>
-
-                        <!-- Right(Notification) -->
                         <ul class="nav navbar-nav navbar-right">
                           
 
@@ -40,17 +30,17 @@
 
                                 <ul class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right user-list notify-list">
                                     <li>
-                                        <h5>Hi, Admin</h5>
+                                        <h5>Chào, Admin</h5>
                                     </li>
                               
-                                    <li><a href="change-password.php"><i class="ti-settings m-r-5"></i> Chnage Password</a></li>
+                                    <li><a href="change-password.php"><i class="ti-settings m-r-5"></i>Đổi Mật Khẩu</a></li>
                            
-                                    <li><a href="logout.php"><i class="ti-power-off m-r-5"></i> Logout</a></li>
+                                    <li><a href="logout.php"><i class="ti-power-off m-r-5"></i>Đăng Xuất</a></li>
                                 </ul>
                             </li>
 
-                        </ul> <!-- end navbar-right -->
+                        </ul> 
 
-                    </div><!-- end container -->
-                </div><!-- end navbar -->
+                    </div>
+                </div>
             </div>

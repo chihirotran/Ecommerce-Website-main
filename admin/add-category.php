@@ -16,7 +16,7 @@ if (strlen($_SESSION['login']) == 0) {
 
     <head>
 
-        <title>Newsportal | Add Category</title>
+        <title>LEDMDSTORE | Thêm Danh Mục</title>
 
         <!-- App css -->
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -34,20 +34,19 @@ if (strlen($_SESSION['login']) == 0) {
 
     <body class="fixed-left">
 
-        <!-- Begin page -->
         <div id="wrapper">
 
-            <!-- Top Bar Start -->
+
             <?php include('includes/topheader.php'); ?>
-            <!-- Top Bar End -->
 
 
-            <!-- ========== Left Sidebar Start ========== -->
+
+
             <?php include('includes/leftsidebar.php'); ?>
-            <!-- Left Sidebar End -->
+
 
             <div class="content-page">
-                <!-- Start content -->
+
                 <div class="content">
                     <div class="container">
 
@@ -55,65 +54,36 @@ if (strlen($_SESSION['login']) == 0) {
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="page-title-box">
-                                    <h4 class="page-title">Add Category</h4>
+                                    <h4 class="page-title">Thêm Danh Mục</h4>
                                     <ol class="breadcrumb p-0 m-0">
                                         <li>
                                             <a href="#">Admin</a>
                                         </li>
                                         <li>
-                                            <a href="#">Category </a>
+                                            <a href="#">Danh Mục </a>
                                         </li>
                                         <li class="active">
-                                            Add Category
+                                            Thêm Danh Mục
                                         </li>
                                     </ol>
                                     <div class="clearfix"></div>
                                 </div>
                             </div>
                         </div>
-                        <!-- end row -->
+
 
 
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="card-box">
-                                    <h4 class="m-t-0 header-title"><b>Add Category </b></h4>
+                                    <h4 class="m-t-0 header-title"><b>Thêm Danh Mục </b></h4>
                                     <hr />
-
-
-
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <!---Success Message--->
-                                        <?php if ($msg) { ?>
-                                        <div class="alert alert-success" role="alert">
-                                            <strong>Well done!</strong>
-                                            <?php echo htmlentities($msg); ?>
-                                        </div>
-                                        <?php } ?>
-
-                                        <!---Error Message--->
-                                        <?php if ($error) { ?>
-                                        <div class="alert alert-danger" role="alert">
-                                            <strong>Oh snap!</strong>
-                                            <?php echo htmlentities($error); ?>
-                                        </div>
-                                        <?php } ?>
-
-
-                                    </div>
-                                </div>
-
-
-
-
-
                                 <div class="row">
                                     <div class="col-md-6">
                                         <form class="form-horizontal" name="category" method="post">
                                         
                                             <div class="form-group">
-                                                <label class="col-md-2 control-label">Category</label>
+                                                <label class="col-md-2 control-label">Danh Mục</label>
                                                 <div class="col-md-10">
                                                     <input type="text" class="form-control" value="" name="category"
                                                         required>
@@ -127,7 +97,7 @@ if (strlen($_SESSION['login']) == 0) {
                                                     <button type="submit"
                                                         class="btn btn-custom waves-effect waves-light btn-md"
                                                         name="submit">
-                                                        Submit
+                                                        Thêm
                                                     </button>
                                                 </div>
                                             </div>
@@ -151,12 +121,12 @@ if (strlen($_SESSION['login']) == 0) {
                             </div>
                         </div>
                     </div>
-                    <!-- end row -->
 
 
-                    </div> <!-- container -->
 
-                </div> <!-- content -->
+                    </div> 
+
+                </div>
 
                 <?php include('includes/footer.php'); ?>
 
@@ -167,7 +137,7 @@ if (strlen($_SESSION['login']) == 0) {
             var resizefunc = [];
         </script>
 
-        <!-- jQuery  -->
+
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
         <script src="assets/js/detect.js"></script>
@@ -178,7 +148,7 @@ if (strlen($_SESSION['login']) == 0) {
         <script src="assets/js/jquery.scrollTo.min.js"></script>
         <script src="../plugins/switchery/switchery.min.js"></script>
 
-        <!-- App js -->
+
         <script src="assets/js/jquery.core.js"></script>
         <script src="assets/js/jquery.app.js"></script>
 

@@ -14,7 +14,7 @@ if (strlen($_SESSION['login']) == 0) {
 
     <head>
 
-        <title> News | Manage SubCategories</title>
+        <title> LEDMDSTORE | Quản Lý Đơn Hàng</title>
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="assets/css/core.css" rel="stylesheet" type="text/css" />
         <link href="assets/css/components.css" rel="stylesheet" type="text/css" />
@@ -29,73 +29,38 @@ if (strlen($_SESSION['login']) == 0) {
 
 
     <body class="fixed-left">
-
-        <!-- Begin page -->
         <div id="wrapper">
-
-            <!-- Top Bar Start -->
             <?php include('includes/topheader.php'); ?>
-
-            <!-- ========== Left Sidebar Start ========== -->
             <?php include('includes/leftsidebar.php'); ?>
-            <!-- Left Sidebar End -->
-
-
-
-            <!-- ============================================================== -->
-            <!-- Start right Content here -->
-            <!-- ============================================================== -->
             <div class="content-page">
-                <!-- Start content -->
                 <div class="content">
                     <div class="container">
-
-
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="page-title-box">
-                                    <h4 class="page-title">Manage SubCategories</h4>
+                                    <h4 class="page-title">Quản Lý Đơn Hàng</h4>
                                     <ol class="breadcrumb p-0 m-0">
                                         <li>
                                             <a href="#">Admin</a>
                                         </li>
                                         <li>
-                                            <a href="#">SubCategory </a>
+                                            <a href="#">Đơn Hàng</a>
                                         </li>
                                         <li class="active">
-                                            Manage SubCategories
+                                        Quản Lý Đơn Hàng
                                         </li>
                                     </ol>
                                     <div class="clearfix"></div>
                                 </div>
                             </div>
                         </div>
-                        <!-- end row -->
-
-
                         <div class="row">
-                            <div class="col-sm-6">
-
-                                <?php if ($msg) { ?>
-                                    <div class="alert alert-success" role="alert">
-                                        <strong>Well done!</strong> <?php echo htmlentities($msg); ?>
-                                    </div>
-                                <?php } ?>
-
-                                <?php if ($delmsg) { ?>
-                                    <div class="alert alert-danger" role="alert">
-                                        <strong>Oh snap!</strong> <?php echo htmlentities($delmsg); ?>
-                                    </div>
-                                <?php } ?>
-
-
-                            </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="demo-box m-t-20">
                                         <div class="m-b-30">
 
-                                            <h4><i class="fa fa-file"></i> Manage Oder</h4>
+                                            <h4><i class="fa fa-trash-o"></i> Quản Lý Đơn Hàng</h4>
 
                                         </div>
 
@@ -103,14 +68,9 @@ if (strlen($_SESSION['login']) == 0) {
                                             <table class="table m-0 table-colored-bordered table-bordered-danger">
                                                 <thead>
                                                     <tr>
-                                                        <th>#</th>
-                                                        <th>ID Oder</th>
-                                                        <th>Total Price</th>
-                                                        <th>Date Oder</th>
-                                                        <th>Address</th>
-                                                        <th>Type</th>
-                                                        <th>Status</th>
-                                                        <th>Action</th>
+                                                        <th>ID</th>
+                                                        <th>Tên Sản Phẩm</th>
+                                                        <th>Số Lượng</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -121,22 +81,16 @@ if (strlen($_SESSION['login']) == 0) {
                                     </div>
                                 </div>
                             </div>
-                        </div> <!-- container -->
+                        </div> 
 
-                    </div> <!-- content -->
+                    </div> 
                     <?php include('includes/footer.php'); ?>
                 </div>
 
             </div>
-            <!-- END wrapper -->
-
-
-
             <script>
                 var resizefunc = [];
             </script>
-
-            <!-- jQuery  -->
             <script src="assets/js/jquery.min.js"></script>
             <script src="assets/js/bootstrap.min.js"></script>
             <script src="assets/js/detect.js"></script>
@@ -146,11 +100,8 @@ if (strlen($_SESSION['login']) == 0) {
             <script src="assets/js/jquery.slimscroll.js"></script>
             <script src="assets/js/jquery.scrollTo.min.js"></script>
             <script src="../plugins/switchery/switchery.min.js"></script>
-
-            <!-- App js -->
             <script src="assets/js/jquery.core.js"></script>
             <script src="assets/js/jquery.app.js"></script>
-
     </body>
 
     </html>

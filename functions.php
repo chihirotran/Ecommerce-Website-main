@@ -230,7 +230,7 @@ function login_with_google()
 			header('location:homepage.php');
 		}
 	} else {
-		echo "<a href='" . $client->createAuthUrl() . "'>Google Login</a>";
+		echo "<a href='" . $client->createAuthUrl() . "'>Google Login</a> ";
 	}
 }
 
@@ -1312,7 +1312,9 @@ function Get_Tong_Thu_Nhap(){
 	$cnt =0;
 	while ($row = fetch_array($query)) {	
 		$total = $row['total_price'];
-		echo $total;
+		$total_fomart = number_format($total, 0, '.', ',');
+		echo $total_fomart;
+		
 	}
 }
 function Get_Tong_Thu_Nhap_Thang(){
@@ -1322,7 +1324,8 @@ function Get_Tong_Thu_Nhap_Thang(){
 	$cnt =0;
 	while ($row = fetch_array($query)) {	
 		$total = $row['total_price'];
-		echo $total;
+		$total_fomart = number_format($total, 0, '.', ',');
+		echo $total_fomart;
 	}
 }
 function Get_Tong_San_Pham(){

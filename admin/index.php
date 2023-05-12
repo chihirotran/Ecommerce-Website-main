@@ -2,17 +2,17 @@
 session_start();
 //Database Configuration File
 include('../config.php');
-//error_reporting(0);
+
 if (isset($_POST['login'])) {
 
-    // Getting username/ email and password
+    
     $uname = $_POST['username'];
     $password = $_POST['password'];
-    // Fetch data from database on the basis of username/email and password
+    
     $sql = query( "SELECT username,password as adminpass,user_id FROM users WHERE (username='$uname'|| email='$uname') AND role='1'");
     confirm($sql);
     while($row = fetch_array($sql)) {
-        $hashpassword = $row['adminpass']; // Hashed password fething from database
+        $hashpassword = $row['adminpass']; 
     //verifying Password
         // if (password_verify($password, $hashpassword)) {
             if($password== $hashpassword){
@@ -24,7 +24,7 @@ if (isset($_POST['login'])) {
 
         }
     }
-    //if username or email not found in database
+    
 
 }
 ?>
@@ -40,7 +40,7 @@ if (isset($_POST['login'])) {
 
 
     <!-- App title -->
-    <title>News Portal | Admin Panel</title>
+    <title>LEDMDSTORE | Admin Panel</title>
 
     <!-- App css -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -70,7 +70,7 @@ if (isset($_POST['login'])) {
                             <div class="text-center account-logo-box">
                                 <h2 class="text-uppercase">
                                     <a href="index.html" class="text-success">
-                                        <span><img src="assets/images/logo.png" alt="" height="56"></span>
+                                        <span>LEDMDSTORE</span>
                                     </a>
                                 </h2>
                                 <!--<h4 class="text-uppercase font-bold m-b-0">Sign In</h4>-->
@@ -97,7 +97,7 @@ if (isset($_POST['login'])) {
                                     <div class="form-group account-btn text-center m-t-10">
                                         <div class="col-xs-12">
                                             <button class="btn w-md btn-bordered btn-danger waves-effect waves-light"
-                                                type="submit" name="login">Log In</button>
+                                                type="submit" name="login">Đăng Nhập</button>
                                         </div>
                                     </div>
 

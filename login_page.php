@@ -35,7 +35,7 @@
                         <input type="text" name="username" placeholder="username"></label>
                         <input type="password" name="password" placeholder="password"></label>
 
-                        <input type="submit" name="submit" class="btn btn-primary" >
+                        <input type="submit" name="submit" class="btn btn-primary" value="Đăng Nhập">
                         <?php login_with_google(); ?>
 
             </form>
@@ -45,7 +45,7 @@
 
        </div>
        <br>
-            <h5 style="text-align: center;">Don't have an account? <a href="sign_up.php">Sign Up</a></h5>
+            <h5 style="text-align: center;">Bạn chưa có tài khoản? <a href="sign_up.php">Đăng Ký</a></h5>
 </div>
 </div>
 
