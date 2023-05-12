@@ -22,10 +22,10 @@
    
    <table>
        <tr>
-           <th>Product</th>
+           <th>Sản Phẩm</th>
            <th></th>
-           <th>Quantity</th>
-           <th>Subtotal</th>
+           <th>Số Lượng</th>
+           <th>Tổng</th>
 
        </tr>
         <?php cart(); ?>
@@ -36,23 +36,23 @@
     <div class="total-price">
         <table>
             <tr>
-                <td>Items</td>
+                <td>Số Sản Phẩm</td>
                 <td><?php echo isset($_SESSION['total_number']) ? $_SESSION['total_number'] : $_SESSION['total_number'] = "0"; ?></td>
             </tr>
             <tr>
-                <td>Shipping and Handling</td>
+                <td>Phí Ship</td>
                 <td>Free</td>
             </tr>
             <tr>
-                <td>Total</td>
+                <td>Thành Tiền</td>
                 <td><?php echo isset($_SESSION['total_price']) ? $_SESSION['total_price'] : $_SESSION['total_price'] = "0"; ?>VND</td>
             </tr>
             
         </table>
     </div>
     <div class="total-price">
-       <a href="products.php" class="btn" style="margin-right:7px;" >Continue</a>
-        <a href="checkout.php" class="btn" >Proceed to checkout &#8594;</a>
+       <a href="products.php" class="btn" style="margin-right:7px;" >Thêm Sản Phẩm</a>
+        <a href="checkout.php" class="btn" >Thanh Toán &#8594;</a>
     </div>
     
 </div>

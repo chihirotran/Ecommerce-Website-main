@@ -50,7 +50,7 @@ function fetch_array($result)
 
 function get_four_products()
 {
-	$query = query("SELECT * FROM products");
+	$query = query("SELECT * FROM `products` ORDER BY `products`.`product_id` DESC");
 	$count = 0;
 	confirm($query);
 
@@ -63,7 +63,7 @@ function get_four_products()
 		    	<h4><a href="product_detail.php?id={$row['product_id']}">{$row['product_title']}</a></h4>
 		    	<p style="color: red;">{$row['product_price']}VND</p>
 		    	<p>{$row['product_short_desc']}</p>
-		        <a class="btn" href="cart.php?add={$row['product_id']}">Add to cart</a>
+		        <a class="btn" href="cart.php?add={$row['product_id']}" style="font-family: sans-serif;">Thêm vào Giỏ Hàng</a>
 		    </div>
 		DELIMETER;
 
@@ -108,7 +108,7 @@ function get_products()
 		    	<h4><a href="product_detail.php?id={$row['product_id']}">{$row['product_title']}</a></h4>
 		    	<p style="color: red;">{$row['product_price']}VND</p>
 		    	<p>{$row['product_short_desc']}</p>
-		        <a class="btn" href="cart.php?add={$row['product_id']}">Add to cart</a>
+		        <a class="btn" href="cart.php?add={$row['product_id']}" style="font-family: sans-serif;">Thêm vào Giỏ Hàng</a>
 		    </div>
 		DELIMETER;
 
@@ -593,7 +593,7 @@ function time_sale_products()
 		    	<h4><a href="product_detail.php?id={$row['product_id']}">{$row['product_title']}</a></h4>
 		    	<p style="color: red;">{$price_sale}VND</p>
 		    	<p>{$row['product_short_desc']}</p>
-		        <a class="btn" href="cart.php?add={$row['product_id']}">Add to cart</a>
+		        <a class="btn" href="cart.php?add={$row['product_id']}" style="font-family: sans-serif;">Thêm vào Giỏ Hàng</a>
 		    </div>
 		DELIMETER;
 
@@ -615,7 +615,7 @@ function get_category_products()
 	 	    	<h4><a href="product_detail.php?id={$row['product_id']}">{$row['product_title']}</a></h4>
 	 	    	<p style="color: red;">{$row['product_price']}VND</p>
 	 	    	<p>{$row['product_short_desc']}</p>
-	 	        <a class="btn btn-primary" target="_blank" href="cart.php?add={$row['product_id']}">Add to cart</a>
+	 	        <a class="btn btn-primary" target="_blank" href="cart.php?add={$row['product_id']}" style="font-family: sans-serif;">Thêm vào Giỏ Hàng</a>
 	 	    </div>
 	DELIMETER;
 

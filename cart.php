@@ -94,9 +94,9 @@
                                         <div>
                                         <p><a href="product_detail.php?id={$row['product_id']}">{$row['product_title']}</a></p>
                                         <small>Price: {$row['product_price']}VND</small><br>
-                                        <a href="cart.php?add={$row['product_id']}">Add &emsp;</a>
-                                        <a href="cart.php?remove={$row['product_id']}">Remove &emsp;</a>
-                                        <a href="cart.php?delete={$row['product_id']}">Delete</a>
+                                        <a href="cart.php?add={$row['product_id']}">Thêm &emsp;</a>
+                                        <a href="cart.php?remove={$row['product_id']}">Bớt &emsp;</a>
+                                        <a href="cart.php?delete={$row['product_id']}">Xoá</a>
 
                                         </div>
                                 </div>

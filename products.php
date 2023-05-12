@@ -32,13 +32,13 @@
 			       		<input type="text" name="search" placeholder="Search">
 			       	</div>
 			       	<div class="form-group">
-			       		<input type="submit" name="search_product" class="btn btn-primary" value="Search">
+			       		<input type="submit" name="search_product" class="btn btn-primary" value="Tìm Kiếm">
 			       	</div>
 			       </form>
 	       	</div>
 	       	<div class="col">
 	       			       	<div class="dropdown">
-				<button class="dropbtn">Categories</button>
+				<button class="dropbtn">Phần Loại</button>
 				<div class="dropdown-content">
 					<?php get_categories();?>
 

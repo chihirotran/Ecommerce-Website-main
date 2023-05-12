@@ -34,10 +34,10 @@
 	   <div class="row row-2">
 	   		
 
-	       <h2>Category: <?php echo $cat_title; ?></h2>
+	       <h2>Phần Loại: <?php echo $cat_title; ?></h2>
 
                 <div class="dropdown">
-				<button class="dropbtn">Categories</button>
+				<button class="dropbtn">Phân Loại</button>
 				<div class="dropdown-content">
 					<?php get_categories();?>
 

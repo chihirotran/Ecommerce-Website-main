@@ -52,7 +52,7 @@ if(isset($_GET['partnerCode'])){
            
        </div>
        <div class="small-container">
-        <h2 class="title">Cate</h2>
+        <h2 class="title" style="font-family: sans-serif;">Phân Loại</h2>
              <div class="row">
              	<?php get_four_cate(); ?>
            </div>
@@ -60,7 +60,7 @@ if(isset($_GET['partnerCode'])){
        </div>
   
   <div class="small-container">
-        <h2 class="title">Latest Products</h2>
+        <h2 class="title">Sản Phẩm Mới Nhất</h2>
              <div class="row">
              	<?php get_four_products(); ?>
            </div>
