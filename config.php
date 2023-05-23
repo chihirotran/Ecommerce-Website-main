@@ -11,7 +11,7 @@ defined("UPLOAD_DIRECTORY") ? null : define("UPLOAD_DIRECTORY", __DIR__ . DS . "
  $dbhost = "localhost";
  $dbuser = "root";
  $dbpass = "";
- $db = "website_db";
+ $db = "test_code";
  $connection = new mysqli($dbhost, $dbuser, $dbpass, $db) or die("Connect failed: %s\n". $connection -> error);
 
 require_once("functions.php");

@@ -37,7 +37,7 @@
         </div>
         <div class="col-2">
             <h1><?php echo $row["product_title"]; ?></h1>
-            <h4 style="color: red;"><?php echo  $row["product_price"]."VND;" ; ?></h4>
+            <h4 style="color: red;"><?php $price_format = number_format($row["product_price"], 0, '.', ','); echo $price_format."VND;" ; ?></h4>
             
             <a href="cart.php?add=<?php echo $row['product_id']; ?>" class="btn">Thêm Vào Giỏ Hàng</a>
             

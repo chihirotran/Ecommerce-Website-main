@@ -1,4 +1,8 @@
-<?php require_once("config.php"); ?>
+<?php
+require_once("config.php"); 
+checkvoucher();
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,6 +38,12 @@
    </table>
     
     <div class="total-price">
+    <form lass="form-horizontal" name="category" method="post">
+        <div>
+        <input type="text" name="code_voucher" placeholder="">
+        <button type="submit" class="btn btn-custom waves-effect waves-light btn-md" name="submit">Áp Dụng</button>
+        </div>
+    </form>
         <table>
             <tr>
                 <td>Số Sản Phẩm</td>
@@ -49,11 +59,13 @@
             </tr>
             
         </table>
+
     </div>
     <div class="total-price">
        <a href="products.php" class="btn" style="margin-right:7px;" >Thêm Sản Phẩm</a>
         <a href="checkout.php" class="btn" >Thanh Toán &#8594;</a>
     </div>
+    
     
 </div>
 </div>

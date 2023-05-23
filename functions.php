@@ -57,11 +57,12 @@ function get_four_products()
 	while ($row = fetch_array($query)) {
 
 		if ($count < 8) {
+			$price_format = number_format($row['product_price'], 0, '.', ',');
 			$product = <<<DELIMETER
 		    <div class="col-4">
 		    	<a href="product_detail.php?id={$row['product_id']}"><img src="admin/postimages/{$row['product_image']}"></a>
 		    	<h4><a href="product_detail.php?id={$row['product_id']}">{$row['product_title']}</a></h4>
-		    	<p style="color: red;">{$row['product_price']}VND</p>
+		    	<p style="color: red;">{$price_format}VND</p>
 		    	<p>{$row['product_short_desc']}</p>
 		        <a class="btn" href="cart.php?add={$row['product_id']}" style="font-family: sans-serif;">Thêm vào Giỏ Hàng</a>
 		    </div>
@@ -81,6 +82,7 @@ function get_four_cate()
 	while ($row = fetch_array($query)) {
 
 		if ($count < 4) {
+			
 			$product = <<<DELIMETER
 		    <div class="col-4" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(admin/postimages/{$row['product_image']}) center center no-repeat; ; background-size: cover;display: flex;justify-content: center;align-items: center;">
 				
@@ -584,14 +586,15 @@ function time_sale_products()
 	confirm($query);
 
 	while ($row = fetch_array($query)) {
-
+		
 		if ($count < 8) {
 			$price_sale = $row['product_price']*(100-$row['percent'])/100;
+			$price_format = number_format($price_sale, 0, '.', ',');
 			$product = <<<DELIMETER
 		    <div class="col-4">
 		    	<a href="product_detail.php?id={$row['product_id']}"><img src="admin/postimages/{$row['product_image']}"></a>
 		    	<h4><a href="product_detail.php?id={$row['product_id']}">{$row['product_title']}</a></h4>
-		    	<p style="color: red;">{$price_sale}VND</p>
+		    	<p style="color: red;">{$price_format}VND</p>
 		    	<p>{$row['product_short_desc']}</p>
 		        <a class="btn" href="cart.php?add={$row['product_id']}" style="font-family: sans-serif;">Thêm vào Giỏ Hàng</a>
 		    </div>
@@ -1130,6 +1133,7 @@ function Inset_product_oder(){
 		$select = query("SELECT * FROM `oder`WHERE id_user ='{$id_user}' AND Address= '{$Address4}' AND Payment_Type='{$Payment_Type}' AND date_oder = '{$current_time}'"); 
 		while($row = fetch_array($select)) {
 			$id12 = $row['ID'];
+			
             
 		}
 		$total = 0;
@@ -1155,9 +1159,18 @@ function Inset_product_oder(){
                         $sub = $row['product_price'] * $value;
 
                         $item_number += $value;
+						$product_quantity = $row['product_quantity'] - $item_number;
+						if($product_quantity>0){
 						$query_detail = query("INSERT INTO `oder_detail`( `products_id`, `price`, `quantity`, `oder_id`) VALUES ('{$row['product_id']}','{$sub}','{$item_number}','{$id12}')");
                    		confirm($query_detail);
+						
+						$update_product = query("UPDATE `products` SET `product_quantity` = {$product_quantity}");
+						confirm($update_product);
+						
+					}
+					else{
 
+					}
                     }
 
                 }
@@ -1348,6 +1361,20 @@ function Get_News_Comment(){
 		echo $total;
 	}
 }
-function Draw_Dashboard(){
-	
+function checkvoucher(){
+	if (isset($_POST['submit'])) {
+		
+		$voucher = escape_string($_POST['code_voucher']);
+		echo $voucher;
+		$query = query("SELECT * FROM codevoucher WHERE Code='{$voucher}' and Amount>0");
+		confirm($query);
+
+		
+		$total_price_no_format = $_SESSION['total_price_no_format'];
+		while ($row = fetch_array($query)) {
+			$_SESSION['voucher'] = $voucher;
+			$_SESSION['Discount'] = $row['Discount'];
+		}
+	}
+
 }
