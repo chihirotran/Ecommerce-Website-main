@@ -544,7 +544,7 @@ function get_products_update_page()
 
 function time_sale()
 {
-	$query = query("SELECT * FROM `saleevent` WHERE 1;");
+	$query = query("SELECT date FROM saleevent WHERE date > NOW() ORDER BY date ASC LIMIT 1");
 	confirm($query);
 
 	while ($row = fetch_array($query)) {
@@ -557,22 +557,21 @@ function time_sale()
 				
 				<div class="box-time">
 					
-					<span id="days">day</span>
+					<span id="days"></span>
 				</div>
 				<div class="box-time">
 					
-					<span id="hours">hours</span>
+					<span id="hours"></span>
 				</div>
 				<div class="box-time">
 					
-					<span id="minutes">minutes</span>
+					<span id="minutes"></span>
 				</div>
 				<div class="box-time">
 					
-					<span id="seconds">seconds</span>
+					<span id="seconds"></span>
 				</div>
 				</div>
-		
 			
 		DELIMETER;
 

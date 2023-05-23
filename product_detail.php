@@ -100,7 +100,7 @@
     <div class="col">
       
       <form action="add_comment.php?pid=<?php echo $pid; ?>"  method="post">
-        <div class="form-group">
+        <div class="form-group" style="display: flex;flex-direction: column;">
           <label for="comment">Bình Luận:</label>
           <textarea id="comment" name="comment" rows="4" required></textarea>
         </div>
@@ -108,7 +108,7 @@
       </form>
     </div>
   </div>
-</div>   
+</div>  
 <div class="small-container">
   <div class="row">
     <?php 

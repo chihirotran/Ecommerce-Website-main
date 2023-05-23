@@ -51,7 +51,7 @@ nav ul li {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    
+    justify-content: center;
 }
 
 .header .row {
@@ -508,7 +508,16 @@ form a{
     left: 0;
     
 }
-
+#comment{
+    width: 445px;
+    height: 85px;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
 
 
 
