@@ -136,11 +136,13 @@ function login_user()
 
 					$gmail_authentication = escape_string($row['gmail_authentication']);
 					$email = escape_string($row['email']);
+					$_SESSION['user_id'] = $user_id;
 					if ($gmail_authentication == 1) {
 						$_SESSION['user_id'] = $user_id;
 						$_SESSION['username'] = $username;
 						redirect("homepage.php");
 					} else {
+						email_verification($email);
 						redirect("gmail_authentication.php?email=$email&username=$username");
 					}
 				} else {
@@ -149,15 +151,8 @@ function login_user()
 				}
 			}
 		} else {
-			while ($row = fetch_array($query)) {
-			}
-
-
-			if ($username == 'admin' && $password == '1234') {
-				redirect("admin_index.php");
-			} else {
-				redirect("homepage.php");
-			}
+			set_message("Không Có Tài Khoản Này");
+			redirect("login_page.php");
 		}
 	}
 }
@@ -260,6 +255,8 @@ function code_verification($email, $username)
 {
 	$query = query("UPDATE users SET gmail_authentication=1 WHERE email='{$email}' AND username='{$username}'");
 	confirm($query);
+	$_SESSION['username']=$username;
+	
 	redirect("homepage.php");
 }
 
@@ -268,12 +265,7 @@ use PHPMailer\PHPMailer\Exception;
 
 function email_verification($email)
 {
-
-
-	if (isset($_POST['email_verification']))
-
-
-		$email = trim($_POST['email']);
+	$email = trim($_POST['email']);
 
 
 
@@ -299,7 +291,7 @@ function email_verification($email)
 	$mail->Host = 'smtp.gmail.com';
 	$mail->SMTPAuth = true;
 	$mail->Username = 'chihirotran@gmail.com'; // Thay đổi email của bạn
-	$mail->Password = 'rfxdwcdufncndzmf'; // Thay đổi mật khẩu của bạn
+	$mail->Password = 'wcycfexkikrboage'; // Thay đổi mật khẩu của bạn
 	$mail->SMTPSecure = 'tls';
 	$mail->Port = 587;
 	// Thiết lập thông tin email
@@ -938,23 +930,39 @@ function Show_Product_admin()
 }
 function Show_Product_oder_user()
 {
-
-	$query = query("SELECT *, categories.cat_title FROM `products`, categories WHERE products.product_category_id= categories.cat_id;");
+	$query = query("SELECT * FROM `oder` WHERE oder.id_user={$_SESSION['user_id']} ORDER BY `oder`.`date_oder` DESC;");
 	confirm($query);
+	$cnt =0;
 	while ($row = fetch_array($query)) {
-		$product = <<<DELIMETER
-		<tr>
-			<td><b>{$row['product_title']}</b></td>
-			<td><b>{$row['cat_title']}</b></td>
-			<td><b>{$row['product_price']}</b></td>
-			<td><b>{$row['product_quantity']}</b></td>
-			<td><b><img src="postimages/{$row['product_image']}" width=100></b></td>
-			<td><a href="edit-product.php?pid={$row['product_id']}"><i class="fa fa-pencil" style="color: #29b6f6;"></i></a>
-				&nbsp;<a href="manage-posts.php?pid={$row['product_id']}&&action=del" onclick="return confirm('Do you reaaly want to delete ?')"> <i class="fa fa-trash-o" style="color: #f05050"></i></a> </td>
+		$st = $row['Pay'];
+		if ($st == 1) {
+			$sta = 'Da Duyet';
+		}
+		else {
+			$sta = 'Chua Duyet';
+		}	
+		$comment = <<<DELIMETER
+		<tr> 
+			<td onclick="window.location.href='profile_oder_detail.php?oid={$row['ID']}'">{$row['ID']}</td>  
+			<td onclick="window.location.href='profile_oder_detail.php?oid={$row['ID']}'">{$row['date_oder']}</td>    
+			<td onclick="window.location.href='profile_oder_detail.php?oid={$row['ID']}'"> {$row['Payment_Type']}</td>                                                     
+			<td onclick="window.location.href='profile_oder_detail.php?oid={$row['ID']}'">{$row['price']}</td>
+			<td>$sta</td>
+			
 		</tr>
 		DELIMETER;
-		echo $product;
+		$cnt ++;
+		echo $comment;
 	}
+
+
+
+
+
+
+	// ------------------------
+
+	
 }
 function Show_Product_Sale_admin()
 {
@@ -1312,6 +1320,24 @@ function Get_oder_detail_admin(){
 			<td>{$row['product_title']}</td>
 			<td>{$row['quantity']}</td>
 			<td><b><img src="postimages/{$row['product_image']}" width=100></b></td>
+		</tr>
+		DELIMETER;
+		$cnt ++;
+		echo $comment;
+	}
+}
+function Get_oder_detail_user(){
+	$oder_id = escape_string($_GET['oid']);
+	$query = query("SELECT * FROM `oder_detail`,products WHERE products.product_id = oder_detail.products_id AND oder_detail.oder_id ={$oder_id};");
+	confirm($query);
+	$cnt =0;
+	while ($row = fetch_array($query)) {	
+		$comment = <<<DELIMETER
+		<tr> 
+			<td>{$row['oder_id']}</td>                                                           
+			<td>{$row['product_title']}</td>
+			<td>{$row['quantity']}</td>
+			<td><b><img src="admin/postimages/{$row['product_image']}" width=100></b></td>
 		</tr>
 		DELIMETER;
 		$cnt ++;

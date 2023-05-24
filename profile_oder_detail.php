@@ -70,15 +70,14 @@
                                                 <tr>
 
                                                     <th>ID</th>
-                                                    <th>Ngày Đặt</th>
-                                                    <th>Kiểu Thanh Toán</th>
-                                                    <th>Tổng Tiền</th>
-                                                    <th>Trạng Thái</th>
+                                                    <th>Tên Sản Phẩm</th>
+                                                    <th>Số Lượng</th>
+                                                    <th>Ảnh</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                Show_Product_oder_user();
+                                                Get_oder_detail_user();
                                                 ?>
                                             </tbody>
                                         </table>

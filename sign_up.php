@@ -49,7 +49,7 @@
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
     $mail->Username = 'chihirotran@gmail.com'; // Thay đổi email của bạn
-    $mail->Password = 'rfxdwcdufncndzmf'; // Thay đổi mật khẩu của bạn
+    $mail->Password = 'wcycfexkikrboage'; // Thay đổi mật khẩu của bạn
     $mail->SMTPSecure = 'tls';
     $mail->Port = 587;
     // Thiết lập thông tin email
@@ -79,7 +79,7 @@
       <div class="row">
 
 
-        <div class="col-2" style="padding-left: 500px;">
+        <div class="col-2" >
           <div class="form-container">
             <div class="form-btn">
               <span>Đăng Kí </span>

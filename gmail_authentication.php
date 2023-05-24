@@ -19,7 +19,7 @@
       <div class="row">
 
 
-        <div class="col-2" style="padding-left: 500px;">
+        <div class="col-2" >
           <div class="form-container">
             <div class="form-btn">
               <span>Sign Up</span>

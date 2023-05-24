@@ -16,7 +16,10 @@
     }
     
     update_user_GG($id_new);
-  } else {
+  }else if (isset($_POST['oder'])){
+    redirect('profile_oder.php');
+  }
+   else {
     $query = query("SELECT * FROM users WHERE user_id = " . escape_string($_GET['id']) . " ");
     confirm($query);
 
