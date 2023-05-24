@@ -37,6 +37,7 @@
 
                         <input type="submit" name="submit" class="btn btn-primary" value="Đăng Nhập">
                         <?php login_with_google(); ?>
+                        <?php login_with_facebook(); ?>
 
             </form>
               </div>
