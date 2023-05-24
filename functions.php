@@ -1219,6 +1219,7 @@ function Inset_product_oder(){
 		  } 
 		  unset($_SESSION['total_price']);
 		  unset($_SESSION['total_number']);
+		  
 
 		// echo $id_user;
 		// echo $Address;

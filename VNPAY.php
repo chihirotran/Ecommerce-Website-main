@@ -11,10 +11,11 @@ $vnp_HashSecret = "AWFAOWWAXDYWZFATFWRQYCPXMIMQNPLY"; //Chuỗi bí mật
 $vnp_TxnRef = rand(00,9999); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
 $vnp_OrderInfo = 'Noi Dung Thanh Toan';
 $vnp_OrderType = 'billpayment';
-$vnp_Amount = $_SESSION['total_price'] * 100000;
+$vnp_Amount = $_SESSION['total_price_no_format']*100;
 $vnp_Locale = 'vn';
 $vnp_BankCode = 'NCB';
 $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
+
 //Add Params of 2.0.1 Version
 // $vnp_ExpireDate = $_POST['txtexpire'];
 //Billing

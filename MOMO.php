@@ -1,6 +1,6 @@
 <?php
 header('Content-type: text/html; charset=utf-8');
-
+require_once("config.php"); 
 
 function execPostRequest($url, $data)
 {
@@ -29,7 +29,7 @@ $partnerCode = 'MOMOBKUN20180529';
 $accessKey = 'klm05TvNBzhg7h7j';
 $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
 $orderInfo = "Thanh toán qua QR MoMo";
-$amount = "10000";
+$amount = $_SESSION['total_price_no_format'];
 $orderId = time() ."";
 $redirectUrl = "http://localhost/Ecommerce-Website-main/homepage.php";
 $ipnUrl = "http://localhost/Ecommerce-Website-main/homepage.php";
