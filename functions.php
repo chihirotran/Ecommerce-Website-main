@@ -73,6 +73,31 @@ function get_four_products()
 		}
 	}
 }
+function get_four_top_products()
+{
+	$query = query("SELECT p.* FROM products AS p JOIN ( SELECT od.products_id FROM oder_detail AS od GROUP BY od.products_id ORDER BY SUM(od.quantity) DESC LIMIT 8 ) AS top_products WHERE p.product_id = top_products.products_id LIMIT 8;");
+	$count = 0;
+	confirm($query);
+
+	while ($row = fetch_array($query)) {
+
+		if ($count < 8) {
+			$price_format = number_format($row['product_price'], 0, '.', ',');
+			$product = <<<DELIMETER
+		    <div class="col-4">
+		    	<a href="product_detail.php?id={$row['product_id']}"><img src="admin/postimages/{$row['product_image']}"></a>
+		    	<h4><a href="product_detail.php?id={$row['product_id']}">{$row['product_title']}</a></h4>
+		    	<p style="color: red;">{$price_format}VND</p>
+		    	<p>{$row['product_short_desc']}</p>
+		        <a class="btn" href="cart.php?add={$row['product_id']}" style="font-family: sans-serif;">Thêm vào Giỏ Hàng</a>
+		    </div>
+		DELIMETER;
+
+			echo $product;
+			$count = $count + 1;
+		}
+	}
+}
 function get_four_cate()
 {
 	$query = query("SELECT product_image , cat_title, categories.cat_id FROM `categories` , `products` WHERE products.product_category_id = categories.cat_id GROUP BY categories.cat_id;");

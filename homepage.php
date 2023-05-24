@@ -52,6 +52,13 @@ if(isset($_GET['partnerCode'])){
            
        </div>
        <div class="small-container">
+        <h2 class="title">Sản Phẩm Bán Chạy</h2>
+             <div class="row">
+             	<?php get_four_top_products(); ?>
+           </div>
+           
+       </div>
+       <div class="small-container">
         <h2 class="title" style="font-family: sans-serif;">Phân Loại</h2>
              <div class="row">
              	<?php get_four_cate(); ?>
