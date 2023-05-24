@@ -838,7 +838,7 @@ function add_event()
 			confirm($insert_event);
 			set_message("Event Created");
 			
-			redirect("aboutus.php");
+			redirect("add-event.php");
 		}
 	}
 }
@@ -911,6 +911,7 @@ function add_product_event_adminpage()
 		$query = query("INSERT INTO `products_sale`( `product_id`, `saleevent_id`) VALUES ('{$Name_product}','{$Name_Event}')");
 		confirm($query);
 		
+		redirect("add-product-event.php");
 	}
 }
 function Show_Product_admin()
